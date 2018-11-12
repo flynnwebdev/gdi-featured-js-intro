@@ -4,12 +4,18 @@ highlightTheme : "agate"
 ---
 
 <style>
+    .reveal .slides {
+      zoom: 0.85 !important;
+      height: auto !important;
+    }
+    .reveal .slides section {
+      top: 50% !important;
+      transform: translateY(-50%) !important;
+    }
     .reveal pre {
         width: 100% !important;
     }
     .reveal section pre code {
-        font-size: 2rem !important;
-        line-height:2rem !important;
         overflow: hidden !important;
         max-height: none !important;
         white-space: pre-wrap !important;
