@@ -5,12 +5,13 @@ highlightTheme : "agate"
 
 <style>
     .reveal .slides {
-      zoom: 0.85 !important;
+      zoom: 1 !important;
       height: auto !important;
     }
     .reveal .slides section {
       top: 50% !important;
       transform: translateY(-50%) !important;
+      zoom: 0.85 !important;
     }
     .reveal pre {
         width: 100% !important;
