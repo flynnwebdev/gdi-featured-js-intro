@@ -28,6 +28,16 @@ highlightTheme : "agate"
 ## Loops, Arrays and Objects
 
 ---
+
+# RIP STAN LEE
+
+![](dist/img/stanlee.jpg)
+
+## MARVEL COMIC UNIVERSE CREATOR
+
+## 1922 - 2018
+
+---
  
 ### Loops
 
