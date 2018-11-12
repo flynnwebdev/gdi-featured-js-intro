@@ -2,378 +2,529 @@
 theme : "moon"
 highlightTheme : "agate"
 ---
+
 <style>
+    .reveal .slides {
+      zoom: 1 !important
+      height: auto !important
+    }
+    .reveal .slides section {
+      top: 50% !important
+      transform: translateY(-50%) !important
+      zoom: 0.75 !important
+    }
     .reveal pre {
-        width: 100% !important;
+        width: 100% !important
     }
     .reveal section pre code {
-        font-size: 2rem !important;
-        line-height:2rem !important;
-        overflow: hidden !important;
-        max-height: none !important;
-        white-space: pre-wrap !important;
+        overflow: hidden !important
+        max-height: none !important
+        white-space: pre-wrap !important
     }
 </style>
 
 # Introduction to JavaScript
 
-## Class 2
+## Loops, Arrays and Objects
 
 ---
 
-### Functions
+### Loops
 
-Functions are the Javascript equivalent of Ruby methods. 
+![Lego stormtrooper inside key ring](dist/img/hula-hoop.jpg)
+
+Photo credit: [Steve Pires](http://www.flickr.com/photos/steve_pires/8430087504/) [cc](http://creativecommons.org/licenses/by-nc/2.0/)
 
 ---
-### Declaring Functions
 
-To declare (create) a function, you can give it a name, then include all the code for the function inside curly brackets `{}`
+### While loops
+
+`[while](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/while)` will repeat the same code over and over until some condition is met.
 
 ```
-function parrotFacts() {
-  console.log('Some parrot species can live for over 80 years')
-  console.log('Kakapos are a critically endangered flightless parrot')
+let bottlesOfBeer = 99
+
+while (bottlesOfBeer > 0) {
+  console.log(bottlesOfBeer + ' bottles of beer on the wall')
+  bottlesOfBeer = bottlesOfBeer - 1
 }
-
 ```
-
-Functions can have multiple lines.
-
-Note that unlike Ruby, the parentheses () after the name are required
 
 ---
-### Using Functions
 
-To invoke (use) a function, you type its name, followed by parenthesis `()`
+### Infinite Loops
 
-```
- parrotFacts()
-```
+Make sure something changes in the loop, or your loop will go on forever...
 
-We'll talk about what can go inside those parenthesis in a minute! For now, leave them empty.
+![Spiral that goes on toward infinity](dist/img/infinite-loop.jpg)
+
+Photo credit: [Samuel John](http://www.flickr.com/photos/samueljohn/5348462863/) [cc](http://creativecommons.org/licenses/by-nc/2.0/)
 
 ---
+
+### For loops
+
+`[for](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for)` loops are very similar, but you declare a counter in the statement.
+
+```
+// will count 1 to 10
+for (let i = 1 i <= 10 i++) {
+  console.log(i)
+}
+```
+
+---
+
+### Loops and logic
+
+You can add other statements or logical operators inside the loops.
+
+```
+// Count from 1 to 100
+
+for (let i = 1 i <= 100 i++) {
+  if (i % 3 === 0) {
+    // Says 'Fizz' after multiples of three
+    console.log(' Fizz')
+  } else if (i % 5 === 0) {
+    // Says 'Buzz' after multiples of five
+    console.log(' Buzz')
+  } else {
+    console.log(i)
+  }
+}
+```
+
+---
+
+### Break
+
+To exit a loop, use the `[break](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/break)` statement.
+
+```
+// Count from 100 to 200
+for (let i = 100 i <= 200 i++) {
+  console.log('Testing ' + i)
+
+  //Stop at the first multiple of 7
+  if (i % 7 == 0) {
+    console.log('Found it! ' + i)
+    break
+  }
+}
+```
+
+---
+
 ### Let's Develop It
 
-Write a function that outputs a sentence. Then invoke that function later in your code.
+Write a loop that gives you the 9's times table,  
+from **9 x 1 = 9** to **9 x 12 = 108**.
+
+  
+
+Finish early? Try using a loop inside a loop to write all the times tables, from 1 to 12.
 
 ---
-### Arguments
 
-Functions, like Ruby methods, can accept parameters.
+### Arrays
 
-```
-function callKitten(kittenName){
-  console.log(`Come here, ${kittenName}!`)
-}
+![Group of kittens](dist/img/kitten-group.jpg)
 
-callKitten('Fluffy') // outputs 'Come here, Fluffy!'
-
-function addNumbers(a, b){
-  console.log(a + b)
-}
-
-addNumbers(5, 7)  // outputs 12
-addNumbers(9, 12) // outputs 21
-
-```
+Photo credit: [Jesus Solana](http://www.flickr.com/photos/pasotraspaso/4444291348/) [cc](http://creativecommons.org/licenses/by-nc/2.0/)
 
 ---
-### ES6 Functions
 
-Modern JS (ES6) supports an alternative function declaration
+### Arrays
+
+[Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) are ordered lists of values.
 
 ```
-function addOne(num){
-  let newNumber = num + 1
-  console.log('You now have ' + newNumber)
-}
+let arrayName = [value0, value1]
+```
 
-// Declare variables
-let numberOfKittens = 5
-let numberOfPuppies = 4
+  
 
-// Use them in functions
-addOne(numberOfKittens)
-addOne(numberOfPuppies)
+You can put different types of data into an array.
 
+```
+let rainbowColors = ['Red', 'Orange', 'Yellow', 'Green',
+  'Blue', 'Indigo', 'Violet']
+
+let lotteryNumbers = [33, 72, 64, 18, 17, 85]
+
+let myFavoriteThings = ['Broccoli', 1024, 'Sherlock']
 ```
 
 ---
+
+### Array Length
+
+The `[length](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/length)` property tells you how many things are in an array.
+
+```
+let rainbowColors = ['Red', 'Orange', 'Yellow', 'Green',
+'Blue', 'Indigo', 'Violet']
+
+console.log(rainbowColors.length)
+```
+
+---
+
+### Using Arrays
+
+You can access items with **bracket notation** by using the position of the item you want.
+
+```
+let rainbowColors = ['Red', 'Orange', 'Yellow', 'Green',
+'Blue', 'Indigo', 'Violet']
+
+let firstColor = rainbowColors[0]
+let lastColor  = rainbowColors[6]
+```
+
+  
+
+JS arrays are **zero-indexed**, so counting starts at 0.
+
+---
+
+### Changing arrays
+
+You can use bracket notation to change an item in an array
+
+```
+let myFavoriteThings = ['Broccoli', 1024, 'Sherlock']
+
+myFavoriteThings[0] = 'Asparagus'
+```
+
+---
+
+### Expanding arrays
+
+Arrays do not have a fixed length. You can use `[push](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push)` to add something to an array.
+
+```
+let myFavoriteThings = ['Broccoli', 1024, 'Sherlock']
+
+myFavoriteThings.push('Dancing')
+```
+
+---
+
+### Delete array elements
+
+The `delete` keyword can be used to destroy an array element. The remainder of the array is unchanged.
+
+```
+let arr = [ 'a', 'b', 'c', 'd' ]
+delete arr[1]
+console.log(arr)   // [ 'a', undefined, 'c', 'd' ]
+```
+
+If you want to remove the element entirely, use `splice`.
+
+```
+let arr = [ 'a', 'b', 'c', 'd' ]
+arr = arr.splice(2, 1)  // Remove 1 element, starting at 2
+console.log(arr)   // [ 'a', 'b', 'd' ]
+```
+
+---
+
 ### Let's Develop It
 
-Write a simple program to combine a first name and a last name inside a function. Then update the function to accept a first and last name as arguments.
+Create an array of your favorite foods. Populate the array with at least 10 foods.
+
+Print a few values to the page or console.
+
+Write code to remove one of the foods, then display the array again.
 
 ---
-### Returning Values
 
-You can have a function give you back a value, to use later.
+### Iterating through arrays
+
+Use a `for..of` loop to easily work with each item in an array.
 
 ```
-function square(num) {
-  return num * num
+let rainbowColors = ['Red', 'Orange', 'Yellow', 'Green',
+  'Blue', 'Indigo', 'Violet']
+
+for (let color of rainbowColors) {
+  console.log(color)
 }
-
-console.log(square(4))       // outputs '16'
-
-let squareOfFive = square(5) // squareOfFive equals '25'
-
 ```
 
-`return` will immediately end a function.
+---
+
+### Iterating through arrays
+
+Use a `for..in` loop if you need the index of each element.
+
+```
+let rainbowColors = ['Red', 'Orange', 'Yellow', 'Green',
+  'Blue', 'Indigo', 'Violet']
+
+for (let index in rainbowColors) {
+  console.log(`${index} : ${rainbowColors[index]}`)
+}
+```
 
 ---
+
 ### Let's Develop It
 
-Add a return statement to your 'name' function. Use that function to set the value of a variable.
+Use a `for..of` loop to print a list of all your favorite foods.
+
+Also use a `for..in` loop to display the index next to each item. If the index is divisible by 3, display a line of hyphens after that item.
 
 ---
-### Variable Scope
 
-The scope of a variable determines where it's value is accessible throughout your program.
+### Mapping arrays
 
-![Footprints being washed away](dist/img/footprints.jpg)
-
-Photo credit: [\_vikram](http://www.flickr.com/photos/heyvikram/187950111/) [cc](http://creativecommons.org/licenses/by-nc/2.0/)
-
----
-### Global Scope
-
-A variable declared outside of a function has a `global scope` and can be accessed anywhere, even inside of functions.
+Just like Ruby, we can use `map` to generate a new array based on the values in another array.
 
 ```
-let awesomeGroup = 'Girl Develop It' // Global scope
-
-function whatIsAwesome() {
-  console.log(awesomeGroup + ' is pretty awesome.') // Will work
-}
-
-whatIsAwesome()
-
+let nums = [ 2, 3, 4 ]
+let squares = nums.map( x => x ** 2 )   // [ 4, 9, 16 ]
 ```
 
 ---
-### Local Scope
 
-A variable declared inside a function has a `local scope` and can only be accessed within that function.
+### Find in arrays
+
+We can `find` and `findIndex` to get the first element in an array where a given expression is true.
+
+`findIndex` returns the index of the found element, rather than the element itself.
 
 ```
-function whatIsAwesome() {
-  let awesomeGroup = 'Girl Develop It'              // Local scope
-  console.log(awesomeGroup + ' is pretty awesome.') // Will work
-}
-
-whatIsAwesome()
-
-console.log(awesomeGroup + ' is pretty awesome.') // Won't work
-
+let fruit = [ 'Apple', 'Orange', 'Lemon', 'Watermelon', 'Banana' ]
+let item = fruit.find( x => x.length == 6 )   // Orange
+let index = fruit.findIndex( x => x.length == 6 )   // 1
 ```
 
 ---
-### Boolean Variables
 
-![Kitten with light switch](dist/img/kitten-switch.jpg)
-
-Photo credit: [elycefeliz](http://www.flickr.com/photos/elycefeliz/5726163170/) [cc](http://creativecommons.org/licenses/by-nc/2.0/)
-
----
-### Boolean Variables
-
-Boolean variables represent the logical values `true` and `false`
-
-```
-let catsAreBest = true
-let dogsRule = false
-
-```
-
----
-### Boolean Variables
-
-Some values are considered `[falsy](https://developer.mozilla.org/en-US/docs/Glossary/Falsy)` and will evaluate to `false` in a Boolean context.
-
-```
-// the following variables will evaluate as false
-
-let myName = ''
-let numOfKids = 0
-let isMarried     // remember a variable with no value is undefined
-```
-
-`null` and `NaN` will also evaluate as `false`.
-
-Everything else evaluates as `true`.
-
----
-### Control Flow
-
-![Forked path](dist/img/fork-path.jpg)
-
-Photo credit: [DennisM2](http://www.flickr.com/photos/dennism2/1504087870/) [cc](http://creativecommons.org/licenses/by-nc/2.0/)
-
----
-### The if statement
-
-Use `if` statements to decide which lines of code to execute, based on a condition.
-
-```
-if (condition) {
-  // statements to execute
-}
-
-```
-
-```
-let age = 30
-
-if (age > 18) {
-  console.log('You are an adult')
-}
-```
-
----
-### Comparison Operators
-
-| Example   | Name                     | Result                                                                |
-| --------- | ------------------------ | --------------------------------------------------------------------- |
-| `a == b`  | Equal                    | **`TRUE`** if `a` is equal to `b` (can be different types).           |
-| `a === b` | Identical                | **`TRUE`** if `a` is equal to `b`, and the same type.                 |
-| `a != b`  | Not equal                | **`TRUE`** if `a` is not equal to `b` (can be different types).       |
-| `a !== b` | Not identical            | **`TRUE`** if `a` is not equal to `b`, or they are not the same type. |
-| `a < b`   | Less than                | **`TRUE`** if `a` is strictly less than `b`.                          |
-| `a > b`   | Greater than             | **`TRUE`** if `a` is strictly greater than `b`.                       |
-| `a <= b`  | Less than or equal to    | **`TRUE`** if `a` is less than or equal to `b`.                       |
-| `a >= b`  | Greater than or equal to | **`TRUE`** if `a` is greater than or equal to `b`.                    |
-
-
----
-### Watch out!
-
-Don't mix up `=` and `==` and `===`
-
-![Caution Tape](dist/img/caution.jpg)
-
-Photo credit: [Eugene Zemlyanskiy](http://www.flickr.com/photos/pictureperfectpose/76138988/) [cc](http://creativecommons.org/licenses/by-nc/2.0/)
-
----
 ### Let's Develop It
 
-Make a variable called "temperature". Write some code that tells you to put on a coat if it is below 50 degrees.
+Use `map` to generate an array of your favorite foods with each food in uppercase.
+
+Use `prompt` to get a search term from the user, then `find` it in the array. Display the found item, or a suitable message if not found.
 
 ---
-### Even more control flow
 
-![Sign post with multiple signs](dist/img/toomanysigns.jpg)
+### Filter an array
 
-Photo credit: [Thomas Hawk](http://www.flickr.com/photos/thomashawk/2402598275/) [cc](http://creativecommons.org/licenses/by-nc/2.0/)
-
----
-### The if/else statement
-
-Use `else` to provide an alternate set of instructions.
+Similar to `map`, but will only keep items where the given expression is true. The kept items are unmodified.
 
 ```
-let age = 30
-
-if (age >= 16) {
-  console.log('Yay, you can drive!')
-} else {
-  console.log('Sorry, you have ' + (16 - age) +
-  ' years until you can drive.')
-}
-
+let numbers = [ 5, 2, 8, 7, 12 ]
+let oddNumbers = numbers.filter( x => x % 2 == 1 )  // [ 5, 7 ]
 ```
 
 ---
-### The if/else statement
 
-If you have multiple conditions, you can use `else if`.
+### Join array elements
+
+We can use `join` to convert an array to a string with elements separated by a given delimiter.
 
 ```
-let age = 30
-
-if (age >= 35) {
-  console.log('You can vote AND run for President!')
-} else if (age >= 30) {
-  console.log('You can vote AND run for the Senate!')
-} else if (age >= 18) {
-  console.log('You can vote!')
-} else {
-  console.log('You can\'t vote, but you can write your representatives.')
-}
-
+let data = [ 12, 'Main', 'Road' ]
+let address = data.join(' ')   //  '12 Main Road'
 ```
 
 ---
+
 ### Let's Develop It
 
-Modify your "wear a coat" code for these conditions:
+Use `filter` to generate an array of your favorite foods, but only those that start with a vowel.
 
-1.  If it's less than 50 degrees, wear a coat.
-2.  If it's less than 30 degrees, wear a coat and a hat.
-3.  If it's less than 0 degrees, stay inside.
-4.  Otherwise, wear whatever you want.
+Use `join` with a `<br>` delimiter to output the array as a list to the webpage.
 
 ---
-### Logical Operators
 
-Example
+### Objects
 
-Name
+![Collection of matches](dist/img/matches.jpg)
 
-Result
-
-`a && b`
-
-And
-
-**`TRUE`** if both `a` and `b` are **`TRUE`**.
-
-`a || b`
-
-Or
-
-**`TRUE`** if either `a` or `b` is **`TRUE`**.
-
-`!a`
-
-Not
-
-**`TRUE`** if `a` is not **`TRUE`**.
+Photo credit: [Jirí Volejník](https://flic.kr/p/8RnSsa) [cc](http://creativecommons.org/licenses/by-nc-sa/2.0/)
 
 ---
-### Using logical operators
 
-You can use these operators to combine conditions.
+### Objects
+
+[Objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects) let us store a collection of properties.
+
+They are the JS equivalent of Ruby hashes.
 
 ```
-let age = 30
-let yearsAsCitizen = 30
+let objectName = {
+  propertyName: propertyValue,
+  propertyName: propertyValue
+}
 
-if (age >=30 && yearsAsCitizen > 9) {
-  console.log('You can run for the Senate!')
-} else {
-  console.log('You are not eligible to run for the Senate')
+```
+
+```
+let user = {
+  hometown: 'Atlanta, GA',
+  hair: 'Auburn',
+  likes: ['knitting', 'code'],
+  birthday: {month: 10, day: 17}
 }
 ```
 
 ---
+
+### Accessing Objects
+
+You can retrieve values using **[dot notation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Property_Accessors#Dot_notation)**
+
+```
+let user = {
+  hometown: 'Atlanta, GA',
+  hair: 'Auburn'
+}
+
+let usersHometown = user.hometown
+```
+
+  
+
+Or using **[bracket notation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Property_Accessors#Bracket_notation)** (like arrays)
+
+```
+let usersHair = user['hair']
+```
+
+---
+
+### Changing Objects
+
+You can use dot or bracket notation to change properties
+
+```
+let user = {
+  hometown: 'Atlanta, GA',
+  hair: 'Auburn'
+}
+
+user.hair = 'blue'
+```
+
+  
+
+Add new properties
+
+```
+user.married = true
+
+```
+
+  
+
+Or delete them
+
+```
+delete user.married
+```
+
+---
+
+### Arrays of Objects
+
+Because arrays can hold any data type, they can also hold objects.
+
+```
+let users = [
+  { name: 'Jolene', age: 21 },
+  { name: 'Alexa',  age: 18 }
+]
+
+for (let user of users) {
+  console.log(user.name + ' is ' + user.age + ' years old.')
+}
+```
+
+---
+
+### Objects
+
+Just like other data types, objects can be passed into functions:
+
+```
+let jolene = {
+  age: 21,
+  hairColor: 'Auburn',
+  likes: ['pizza', 'tacos'],
+  birthday: {month: 3, day: 14, year: 1995}
+}
+
+function describeUser(user) {
+  console.log('You are ' + user.age + ' years old with '
+  + user.hairColor + ' hair.')
+}
+
+describeUser(jolene)
+```
+
+---
+
 ### Let's Develop It
 
-Add a logical operator to your "what to wear" program.
+Create an object to hold information on your favorite recipe. It should have properties for:
+
+*   `recipeTitle` (a string)
+*   `servings` (a number)
+*   `ingredients` (an array of strings)
+*   `directions` (a string)
+
+  
+  
+
+Try displaying some information about your recipe.
+
+Bonus: Create a loop to list all the ingredients.
 
 ---
-### You did it!
 
-![Happy cat](dist/img/kitten-yay.jpg)
+### Object methods
 
-Photo credit: [OnceAndFutureLaura](http://www.flickr.com/photos/laura-kali/7399310732/) [cc](http://creativecommons.org/licenses/by-sa/2.0/)
+Objects can also hold functions.
+
+```
+let jolene = {
+  age: 21,
+  hairColor: 'Auburn',
+  talk: function() {
+    console.log('Hello!')
+  },
+  eat: function(food) {
+    console.log('Yum, I love ' + food)
+  }
+}
+
+```
+
+  
+
+Call object methods using dot notation:
+
+```
+jolene.talk()
+
+jolene.eat('pizza')
+```
 
 ---
-### Resources
 
-*   [JavaScript Guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide), from the Mozilla Developers Network.
-*   [Code Academy](http://www.codecademy.com/tracks/javascript), with interactive JavaScript lessons to help you review.
+### Let's Develop It
+
+Go back to your recipe object. Add a function called `letsCook` that says "I'm hungry! Let's cook..." with the name of your recipe title.
+
+Call your new method.
+
+---
 
 ## Questions?
