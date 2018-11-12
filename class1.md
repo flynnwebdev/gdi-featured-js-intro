@@ -11,7 +11,7 @@ highlightTheme : "agate"
     .reveal .slides section {
       top: 50% !important;
       transform: translateY(-50%) !important;
-      zoom: 0.85 !important;
+      zoom: 0.75 !important;
     }
     .reveal pre {
         width: 100% !important;
