@@ -28,7 +28,7 @@ highlightTheme : "agate"
 ## Loops, Arrays and Objects
 
 ---
-
+ 
 ### Loops
 
 ![Lego stormtrooper inside key ring](dist/img/hula-hoop.jpg)
