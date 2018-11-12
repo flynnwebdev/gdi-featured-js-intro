@@ -1,8 +1,40 @@
----
-theme : "moon"
-highlightTheme : "agate"
----
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>RevealJS : /home/flynn/gdi-featured-js-intro/class1.md</title>
+        <link rel="stylesheet" href="css/reveal.css">
+        <link rel="stylesheet" href="css/theme/moon.css" id="theme">
+        
+       
+        <!-- For syntax highlighting -->
+        <link rel="stylesheet" href="lib/css/agate.css">
 
+        
+
+        <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+        <script>
+          document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+        </script>
+
+        <style type="text/css">
+            @page {    
+              margin: 0;
+              size: auto; 
+            }
+        </style>
+
+        <script>
+         if(window.location.search.match( /print-pdf-now/gi )) {
+           window.print();
+         }
+      </script>
+
+    </head>
+    <body>
+
+        <div class="reveal">
+            <div class="slides"><section  data-markdown><script type="text/template">
 <style>
     .reveal pre {
         width: 100% !important;
@@ -17,33 +49,25 @@ highlightTheme : "agate"
 </style>
 
 ## Introduction to JavaScript
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ### What is JavaScript?
 
 ![Java logo with a no symbol](dist/img/not-java.png)
 
 JavaScript is not Java
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ### JavaScript is the language of the web
 
 ![Laptop and server connected via the internet](dist/img/client-server.jpg)
 
 Photo credits: [Andrew E. Larson](http://www.flickr.com/photos/papalars/5210226441/) and [John Seb Barber](http://www.flickr.com/photos/johnseb/3425464/) [cc](http://creativecommons.org/licenses/by-nc/2.0/)
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ### JavaScript works with HTML & CSS
 
 ![Triangle](dist/img/triangle.jpg)
 
 Photo credit: [Gillicious](http://www.flickr.com/photos/ggunson/44539990/) [cc](http://creativecommons.org/licenses/by-nc-sa/2.0/)
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ### What is JavaScript?
 
 *   Created by Brendan Eich as "LiveScript" in 1995, which got renamed to "JavaScript"
@@ -51,49 +75,37 @@ Photo credit: [Gillicious](http://www.flickr.com/photos/ggunson/44539990/) [cc](
 *   A _client-side processing language_. A browser reads the code and runs it directly.
 *   Interfaces with **HTML** & **CSS**.
 *   Lets you build dynamic webpages that respond to input from users.
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ### What can JavaScript do?
 
 Image lightboxes
 
 [![https://gyazo.com/01b0065c2feee682dbffe3d7bf4e5545](https://i.gyazo.com/01b0065c2feee682dbffe3d7bf4e5545.gif)](https://gyazo.com/01b0065c2feee682dbffe3d7bf4e5545)
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ### What can JavaScript do?
 
 Fully featured web applications
 
 [![https://gyazo.com/1ea0791eece706f4ab9ff8213a4e1fbf](https://i.gyazo.com/1ea0791eece706f4ab9ff8213a4e1fbf.gif)](https://gyazo.com/1ea0791eece706f4ab9ff8213a4e1fbf)
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ### What can JavaScript do?
 
 Keep track of users with [Cookies](https://en.wikipedia.org/wiki/HTTP_cookie) or storing data with [local storage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage).
 
 [![https://gyazo.com/56208a5722a6f7ab682c2baddbba8ce3](https://i.gyazo.com/56208a5722a6f7ab682c2baddbba8ce3.gif)](https://gyazo.com/56208a5722a6f7ab682c2baddbba8ce3)
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ### What can JavaScript do?
 
 Interactive elements like tabs, sliders, etc
 
 [![https://gyazo.com/4841d6f99367b28a1d6fca4395f408a2](https://i.gyazo.com/4841d6f99367b28a1d6fca4395f408a2.gif)](https://gyazo.com/4841d6f99367b28a1d6fca4395f408a2)
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ### What can JavaScript do?
 
 Drawing & animation
 
 [![https://gyazo.com/6e183501f7ae5df7f07d37b9513ccfb9](https://i.gyazo.com/6e183501f7ae5df7f07d37b9513ccfb9.gif)](https://gyazo.com/6e183501f7ae5df7f07d37b9513ccfb9)
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ### Script Tags
 
 You can mix JavaScript and HTML. The **script tag** tells your browser the stuff inside is code, not content.
@@ -101,23 +113,19 @@ You can mix JavaScript and HTML. The **script tag** tells your browser the stuff
 ```
 <script>
   CODE GOES HERE
-</script>
+__SCRIPT_END__
 
 ```
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ### JavaScript Files
 
 Just like CSS, you can split JavaScript code into it's own file.
 
 ```
-<script src="path/to/file.js"></script>
+<script src="path/to/file.js">__SCRIPT_END__
 
 ```
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ### Let's Develop It
 
 *   Make a folder in your `projects` folder called `javascript`.
@@ -135,14 +143,12 @@ Just like CSS, you can split JavaScript code into it's own file.
     <script>
       alert('Hello World!')
       console.log('Secret message')
-    </script>
+    __SCRIPT_END__
   </body>
 </html>
 
 ```
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ### How does JavaScript work?
 
 1.  You visit a website with JavaScript code on it.
@@ -150,17 +156,13 @@ Just like CSS, you can split JavaScript code into it's own file.
 3.  The browser runs each line of code as it reads it.
 4.  Based on these instructions, the browser performs calculations and changes the HTML and CSS on the page.
 5.  If the browser finds code it doesn't understand, it stops running and creates an error message.
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ### Console
 
 You can see what's going on in the **console**.
 
 ![](dist/img/console-panel.png)
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ### Let's Develop It
 
 *   Open the console.
@@ -170,9 +172,7 @@ You can see what's going on in the **console**.
 *   Open your practice page.
 *   Do you see anything in the console?
 *   Try typing in 2 + 2 and hitting enter.
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ### Statements
 
 Each instruction in JS is a "statement", like:
@@ -183,9 +183,7 @@ console.log('I am glad to meet you')
 console.log('I am fuzzy')
 
 ```
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ### Comments
 
 JS supports both multi and single line comments.
@@ -198,9 +196,7 @@ with multiple lines here
 
 console.log('Hello World!') // Or make short comments here
 ```
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ### Getting results onto your screen
 
 Open a popup box.
@@ -223,9 +219,7 @@ Add something to the page.
 document.write('Hello World!')
 
 ```
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ### Let's Develop It
 
 *   Open `index.html`.
@@ -233,9 +227,7 @@ document.write('Hello World!')
 *   Try different ways of printing a message.
 *   Create a new file called `mycode.js`.
 *   Move your code to this file and link it to your page.
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ### variables
 
 To declare a variable in JS, use the keyword `let` and the variable name.
@@ -249,18 +241,14 @@ It is best practice to give your variable a known starting value.
 ```
 let numberOfKittens = 5
 ```
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ### variable Values
 
 *   When you first create a variable, it does not have a value (it is `undefined`).
 *   You can set a value for a variable.
 *   variables can hold different types of data.
 *   The value of a variable can change over time.
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ### Naming variables
 
 *   The variable name is case-sensitive.
@@ -269,9 +257,7 @@ let numberOfKittens = 5
 *   Avoid [reserved words](https://developer.mozilla.org/en/JavaScript/Reference/Reserved_Words).
 *   Choose clarity and meaning for humans to read later.
 *   Camel-case is the convention.
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ### Using a variable
 
 Once you have created a variable, you can use it in your code. Just type the name of the variable.
@@ -281,15 +267,11 @@ let numberOfKittens = 5
 console.log(numberOfKittens)
 
 ```
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ### Let's Develop It
 
 In your JavaScript file, create a variable and give it a valid name and value. Then, display the value.
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ### Data Types
 
 *   **string** string of characters
@@ -322,17 +304,13 @@ In your JavaScript file, create a variable and give it a valid name and value. T
     let goodPickupLines = null
     ```
     
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ### Numbers!
 
 ![Cats in a basket](dist/img/kitten-basket.jpg)
 
 Photo credit: [WJ van den Eijkhof](http://www.flickr.com/photos/tom-poes/2159348460/) [cc](http://creativecommons.org/licenses/by-nc/2.0/)
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ### Numbers
 
 variables can be numbers, either integers or floats (decimals).
@@ -346,9 +324,7 @@ let cutenessRating = 9.6
 JavaScript automatically converts integers to floats
 
 `NaN` = Not-A-Number
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ### Arithmetic Operators
 
 Once you have numbers, you can do math with them!
@@ -359,9 +335,7 @@ let numberOfPuppies = 4
 let numberOfAnimals = numberOfKittens + numberOfPuppies
 
 ```
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ### Arithmetic Operators
 
 | Example | Name           | Result                           |
@@ -372,19 +346,13 @@ let numberOfAnimals = numberOfKittens + numberOfPuppies
 | `a * b` | Multiplication | Product of `a` and `b`.          |
 | `a / b` | Division       | Quotient of `a` and `b`.         |
 | `a % b` | Modulus        | Remainder of `a` divided by `b`. |
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ### Let's Develop It
 
 Create two variables and try some arithmetic operators. Don't forget to display your results!
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ## Strings
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ### Strings
 
 In JS, a string can be created using either single or double quotes. There is no difference between them.
@@ -404,17 +372,13 @@ Alternatively, use double quotes:
 ```
 console.log("I'd like to use an apostrophe")
 ```
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ### Playing with Strings
 
 ![Cat playing with string](dist/img/kitten-string.jpg)
 
 Photo credit: [Mike Lawson](http://www.flickr.com/photos/dirtbikedba/5796961878/) [cc](http://creativecommons.org/licenses/by-nc/2.0/)
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ### String Operators
 
 You can put strings together with a `+`, the concatenation operator.
@@ -425,9 +389,7 @@ let fullName = kittensName + 'McDougle'
 console.log(fullName) // Outputs 'Fluffy McDougle'
 
 ```
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ### String Operators
 
 You can also use `+=` to add things to the end of a string.
@@ -438,15 +400,11 @@ kittensName += 'Snuggles'
 console.log(kittensName) // Outputs 'Admiral Snuggles'
 
 ```
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ### Let's Develop It
 
 Create two variables, a first name and a last name, and then put them together to make a full name. Don't forget to display your results!
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ### Combining strings and numbers
 
 You can use concatenation to mix strings and numbers. When you do this, JavaScript will treat the number like a string.
@@ -458,9 +416,7 @@ let allTheFruit = 'I have ' + numberOfFruit + ' ' + typeOfFruit + '!'
 console.log(allTheFruit)
 
 ```
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ### Template Literal
 
 Similar to Ruby, we can perform string interpolation in JS, except here it is called a template literal.
@@ -474,9 +430,7 @@ let allTheFruit = `I have ${numberOfFruit} ${typeOfFruit}!`
 console.log(allTheFruit)
 
 ```
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ### Let's Develop It
 
 Create a program to calculate the tip at a restaurant. It should:
@@ -485,15 +439,11 @@ Create a program to calculate the tip at a restaurant. It should:
 *   Calculate the total bill.
 *   Output a sentence like "Your total bill, with tip, is $14.75". Use template literals.
 *   Bonus: Use [`toFixed()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/toFixed) to round the bill total to 2 decimals.
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ### Functions
 
 Functions are the Javascript equivalent of Ruby methods. 
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ### Declaring Functions
 
 To declare (create) a function, you can give it a name, then include all the code for the function inside curly brackets `{}`
@@ -509,9 +459,7 @@ function parrotFacts() {
 Functions can have multiple lines.
 
 Note that unlike Ruby, the parentheses () after the name are required
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ### Using Functions
 
 To invoke (use) a function, you type its name, followed by parenthesis `()`
@@ -521,15 +469,11 @@ To invoke (use) a function, you type its name, followed by parenthesis `()`
 ```
 
 We'll talk about what can go inside those parenthesis in a minute! For now, leave them empty.
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ### Let's Develop It
 
 Write a function that outputs a sentence. Then invoke that function later in your code.
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ### Arguments
 
 Functions, like Ruby methods, can accept parameters (aka arguments).
@@ -551,9 +495,7 @@ addNumbers(9, 12) // outputs 21
 ```
 
 Remember, the () after the function name are required for both the declaration and the call, even if there are no arguments.
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ### ES6 Functions
 
 Modern JS (ES6) supports an alternative function declaration using "arrow" notation
@@ -575,15 +517,11 @@ addOne(numberOfPuppies)
 ```
 
 Note that the syntax for _calling_ an arrow function is unchanged.
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ### Let's Develop It
 
 Write a simple program to combine a first name and a last name inside a function. Then update the function to accept a first and last name as arguments.
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ### Returning Values
 
 You can have a function return a value using the `return` keyword.
@@ -608,23 +546,17 @@ let squareOfFive = square(5) // squareOfFive equals '25'
 ```
 
 `return` will immediately end a function.
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ### Let's Develop It
 
 Add a return statement to your 'name' function. Use that function to set the value of a variable.
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ### Boolean Variables
 
 ![Kitten with light switch](dist/img/kitten-switch.jpg)
 
 Photo credit: [elycefeliz](http://www.flickr.com/photos/elycefeliz/5726163170/) [cc](http://creativecommons.org/licenses/by-nc/2.0/)
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ### Boolean Variables
 
 Boolean variables represent the logical values `true` and `false`
@@ -634,9 +566,7 @@ let catsAreBest = true
 let dogsRule = false
 
 ```
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ### Boolean Variables
 
 Some values are considered `[falsy](https://developer.mozilla.org/en-US/docs/Glossary/Falsy)` and will evaluate to `false` in a Boolean context.
@@ -652,17 +582,13 @@ let isMarried     // remember a variable with no value is undefined
 `null` and `NaN` will also evaluate as `false`.
 
 Everything else evaluates as `true`.
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ### Control Flow
 
 ![Forked path](dist/img/fork-path.jpg)
 
 Photo credit: [DennisM2](http://www.flickr.com/photos/dennism2/1504087870/) [cc](http://creativecommons.org/licenses/by-nc/2.0/)
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ### The if statement
 
 Use `if` statements to decide which lines of code to execute, based on a condition.
@@ -681,9 +607,7 @@ if (age > 18) {
   console.log('You are an adult')
 }
 ```
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ### Comparison Operators
 
 | Example   | Name                     | Result                                                                |
@@ -697,9 +621,7 @@ if (age > 18) {
 | `a <= b`  | Less than or equal to    | **`TRUE`** if `a` is less than or equal to `b`.                       |
 | `a >= b`  | Greater than or equal to | **`TRUE`** if `a` is greater than or equal to `b`.                    |
 
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ### Watch out!
 
 Don't mix up `=` and `==` and `===`
@@ -707,23 +629,17 @@ Don't mix up `=` and `==` and `===`
 ![Caution Tape](dist/img/caution.jpg)
 
 Photo credit: [Eugene Zemlyanskiy](http://www.flickr.com/photos/pictureperfectpose/76138988/) [cc](http://creativecommons.org/licenses/by-nc/2.0/)
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ### Let's Develop It
 
 Make a variable called "temperature". Write some code that tells you to put on a coat if it is below 50 degrees.
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ### Even more control flow
 
 ![Sign post with multiple signs](dist/img/toomanysigns.jpg)
 
 Photo credit: [Thomas Hawk](http://www.flickr.com/photos/thomashawk/2402598275/) [cc](http://creativecommons.org/licenses/by-nc/2.0/)
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ### The if/else statement
 
 Use `else` to provide an alternate set of instructions.
@@ -739,9 +655,7 @@ if (age >= 16) {
 }
 
 ```
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ### The if/else statement
 
 If you have multiple conditions, you can use `else if`.
@@ -761,9 +675,7 @@ if (age >= 35) {
 
 ```
 Note that it is the two distinct words `else if` (with a space), not `elsif` as in Ruby
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ### Let's Develop It
 
 Modify your "wear a coat" code for these conditions:
@@ -772,9 +684,7 @@ Modify your "wear a coat" code for these conditions:
 2.  If it's less than 30 degrees, wear a coat and a hat.
 3.  If it's less than 0 degrees, stay inside.
 4.  Otherwise, wear whatever you want.
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ### Logical Operators
 
 <table>
@@ -803,9 +713,7 @@ Modify your "wear a coat" code for these conditions:
 </tr>
 </tbody>
 </table>
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ### Using logical operators
 
 You can use these operators to combine conditions.
@@ -820,20 +728,98 @@ if (age >=30 && yearsAsCitizen > 9) {
   console.log('You are not eligible to run for the Senate')
 }
 ```
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ### Let's Develop It
 
 Add a logical operator to your "what to wear" program.
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ### Resources
 
 *   [JavaScript Guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide), from the Mozilla Developers Network.
 *   [Code Academy](http://www.codecademy.com/tracks/javascript), with interactive JavaScript lessons to help you review.
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ## Questions?
+</script></section></div>
+        </div>
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.js"></script>
+
+        <script>
+            function extend() {
+              var target = {};
+              for (var i = 0; i < arguments.length; i++) {
+                var source = arguments[i];
+                for (var key in source) {
+                  if (source.hasOwnProperty(key)) {
+                    target[key] = source[key];
+                  }
+                }
+              }
+              return target;
+            }
+            // Optional libraries used to extend on reveal.js
+            var deps = [
+              { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+              { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector('[data-markdown]'); } },
+              { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector('[data-markdown]'); } },
+              { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+              { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+              { src: 'plugin/math/math.js', async: true }
+            ];
+            // default options to init reveal.js
+            var defaultOptions = {
+              controls: true,
+              progress: true,
+              history: true,
+              center: true,
+              transition: 'default',
+              dependencies: deps
+            };
+            // options from URL query string
+            var queryOptions = Reveal.getQueryHash() || {};
+            var options = {
+  "notesSeparator": "note:",
+  "separator": "^[\r\n?|\n]---[\r\n?|\n]$",
+  "verticalSeparator": "^[\r\n?|\n]--[\r\n?|\n]$",
+  "theme": "moon",
+  "highlightTheme": "agate",
+  "controls": true,
+  "progress": true,
+  "slideNumber": false,
+  "history": true,
+  "keyboard": true,
+  "overview": true,
+  "center": true,
+  "touch": true,
+  "loop": false,
+  "rtl": false,
+  "shuffle": false,
+  "fragments": true,
+  "embedded": false,
+  "help": true,
+  "showNotes": false,
+  "autoSlide": 0,
+  "autoSlideStoppable": true,
+  "mouseWheel": false,
+  "hideAddressBar": true,
+  "previewLinks": false,
+  "transition": "default",
+  "transitionSpeed": "default",
+  "backgroundTransition": "default",
+  "viewDistance": 3,
+  "parallaxBackgroundImage": "",
+  "parallaxBackgroundSize": "",
+  "parallaxBackgroundHorizontal": null,
+  "parallaxBackgroundVertical": null,
+  "slideExplorerEnabled": true,
+  "browserPath": null,
+  "attributes": ""
+};
+            options = extend(defaultOptions, options, queryOptions);
+            Reveal.initialize(options);
+
+        </script>
+        
+    </body>
+</html>
