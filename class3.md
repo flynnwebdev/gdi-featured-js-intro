@@ -358,6 +358,12 @@ console.log(square.area); // 25
 
 ---
 
+### Let's Develop It
+
+Refactor your Recipe object using classes.
+
+---
+
 ## Resources
 
 [Mozilla `class` reference](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)
