@@ -38,7 +38,7 @@ highlightTheme : "agate"
 ## 1922 - 2018
 
 ---
- 
+
 ### Loops
 
 ![Lego stormtrooper inside key ring](dist/img/hula-hoop.jpg)
