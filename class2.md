@@ -1,4 +1,5 @@
 ---
+
 theme : "moon"
 highlightTheme : "agate"
 ---
@@ -25,17 +26,7 @@ highlightTheme : "agate"
 
 # Introduction to JavaScript
 
-## Loops, Arrays and Objects
-
----
-
-# RIP STAN LEE
-
-![](dist/img/stanlee.jpg)
-
-## MARVEL COMIC UNIVERSE CREATOR
-
-## 1922 - 2018
+## Loops and Arrays
 
 ---
 
@@ -351,6 +342,19 @@ let address = data.join(' ')   //  '12 Main Road'
 Use `filter` to generate an array of your favorite foods, but only those that start with a vowel.
 
 Use `join` with a `<br>` delimiter to output the array as a list to the webpage.
+
+---
+
+## Resources
+
+[Mozilla `Array` reference](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
+
+[Mozilla loops guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Loops_and_iteration)
+
+[W3Schools JS loops practice exercises](https://www.w3schools.com/js/exercise_js.asp?filename=exercise_js_loops1)
+
+[W3Schools JS `Array` practice exercises](https://www.w3schools.com/js/exercise_js.asp?filename=exercise_js_arrays1)
+
 
 ---
 

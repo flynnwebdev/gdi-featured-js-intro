@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>RevealJS : c:\Users\flynn\projects\gdi-featured-js-intro\class3.md</title>
+        <title>RevealJS : c:\Users\flynn\Projects\javascript-slides\class3.md</title>
         <link rel="stylesheet" href="css/reveal.css">
         <link rel="stylesheet" href="css/theme/moon.css" id="theme">
         
@@ -58,15 +58,13 @@
 # Introduction to JavaScript
 
 ## Objects
-</script></section><section  data-markdown><script type="text/template">
-
+</script></section><section  data-markdown><script type="text/template">
 ### Objects
 
 ![Collection of matches](dist/img/matches.jpg)
 
 Photo credit: [Jirí Volejník](https://flic.kr/p/8RnSsa) [cc](http://creativecommons.org/licenses/by-nc-sa/2.0/)
-</script></section><section  data-markdown><script type="text/template">
-
+</script></section><section  data-markdown><script type="text/template">
 ### Objects
 
 [Objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects) let us store a collection of properties.
@@ -89,8 +87,7 @@ let user = {
   birthday: {month: 10, day: 17}
 }
 ```
-</script></section><section  data-markdown><script type="text/template">
-
+</script></section><section  data-markdown><script type="text/template">
 ### Accessing Objects
 
 You can retrieve values using **[dot notation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Property_Accessors#Dot_notation)**
@@ -113,8 +110,7 @@ let usersHair = user['hair']
 ```
 
 Non-existent properties will return `undefined`
-</script></section><section  data-markdown><script type="text/template">
-
+</script></section><section  data-markdown><script type="text/template">
 ### Changing Objects
 
 You can use dot or bracket notation to change properties
@@ -144,8 +140,7 @@ Or delete them
 ```
 delete user.married
 ```
-</script></section><section  data-markdown><script type="text/template">
-
+</script></section><section  data-markdown><script type="text/template">
 ### Arrays of Objects
 
 Because arrays can hold any data type, they can also hold objects.
@@ -160,8 +155,7 @@ for (let user of users) {
   console.log(user.name + ' is ' + user.age + ' years old.')
 }
 ```
-</script></section><section  data-markdown><script type="text/template">
-
+</script></section><section  data-markdown><script type="text/template">
 ### Objects
 
 Just like other data types, objects can be passed into functions:
@@ -181,8 +175,7 @@ function describeUser(user) {
 
 describeUser(jolene)
 ```
-</script></section><section  data-markdown><script type="text/template">
-
+</script></section><section  data-markdown><script type="text/template">
 ### Let's Develop It
 
 Create an object to hold information on your favorite recipe. It should have properties for:
@@ -198,8 +191,7 @@ Create an object to hold information on your favorite recipe. It should have pro
 Try displaying some information about your recipe.
 
 Bonus: Create a loop to list all the ingredients.
-</script></section><section  data-markdown><script type="text/template">
-
+</script></section><section  data-markdown><script type="text/template">
 ### Object methods
 
 Objects can also hold functions.
@@ -227,15 +219,13 @@ jolene.talk()
 
 jolene.eat('pizza')
 ```
-</script></section><section  data-markdown><script type="text/template">
-
+</script></section><section  data-markdown><script type="text/template">
 ### Let's Develop It
 
 Go back to your recipe object. Add a function called `letsCook` that says "I'm hungry! Let's cook..." with the name of your recipe title.
 
 Call your new method.
-</script></section><section  data-markdown><script type="text/template">
-
+</script></section><section  data-markdown><script type="text/template">
 ### Dynamic objects
 
 It would be useful to be able to create a new object with a given structure, but pass in the initial properties as parameters.
@@ -262,8 +252,7 @@ person1.greeting()
 ```
 
 It works, but it's a bit cumbersome ...
-</script></section><section  data-markdown><script type="text/template">
-
+</script></section><section  data-markdown><script type="text/template">
 ### Constructor functions
 
 Enter the Javascript equivalent of a class with an initialize method - the constructor function.
@@ -286,8 +275,7 @@ let p1 = new Person('Sarah')
 let p2 = new Person('Bob')
 p2.greeting()
 ```
-</script></section><section  data-markdown><script type="text/template">
-
+</script></section><section  data-markdown><script type="text/template">
 ### The Prototype
 
 One issue with the previous example is that `p1` and `p2` both have their own copy of the `greeting` method, since `this.greeting` is set every time (check it out on console!).
@@ -295,8 +283,7 @@ One issue with the previous example is that `p1` and `p2` both have their own co
 This is far from ideal - it's not DRY!
 
 We can avoid this by assigning common properties and methods to a special `prototype` object that automatically exists within all JS objects.
-</script></section><section  data-markdown><script type="text/template">
-
+</script></section><section  data-markdown><script type="text/template">
 ### The Prototype
 
 The prototype serves as the template or blueprint for a group of objects, and is roughly equivalent to a Ruby class.
@@ -316,8 +303,7 @@ Note that we must move the method definition outside of the constructor, and pre
 Now there will be only one copy of `greeting` which will be shared by all instances of `Person`.
 
 We can use the same syntax to set a shared variable.
-</script></section><section  data-markdown><script type="text/template">
-
+</script></section><section  data-markdown><script type="text/template">
 ### The Prototype
 
 A handy feature of JS is that we can modify prototypes on the fly, and any existing instances will automatically update with the changes.
@@ -332,8 +318,7 @@ Number.prototype.cube = function() {
 let x = 2
 x.cube()   // 8
 ```
-</script></section><section  data-markdown><script type="text/template">
-
+</script></section><section  data-markdown><script type="text/template">
 ### Let's Develop It
 
 Refactor your recipe program so that it uses a constructor function called `Recipe`.
@@ -343,8 +328,43 @@ Refactor your recipe program so that it uses a constructor function called `Reci
 * The `letsCook` method should now be a method of the Recipe prototype, and your code that lists the ingredients should also become a prototype method.
 
 * Test your constructor by creating an instance, then calling the `letsCook` and `listIngredients` methods.
-</script></section><section  data-markdown><script type="text/template">
+</script></section><section  data-markdown><script type="text/template">
+### Classes
 
+ES6 provides classes as 'syntactic sugar'. Under the hood, the JS runtime is still creating prototype-based objects.
+
+```
+class Rectangle {
+  constructor(height, width) {
+    this.height = height;
+    this.width = width;
+  }
+  // Getter
+  get area() {
+    return this.height * this.width;
+  }
+  // Method
+  scale(ratio) {
+    this.width *= ratio
+    this.height *= ratio
+  }
+}
+
+const square = new Rectangle(10, 10);
+console.log(square.area); // 100
+square.scale(0.5)
+console.log(square.area); // 25
+```
+</script></section><section  data-markdown><script type="text/template">
+## Resources
+
+[Mozilla `class` reference](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)
+
+[W3Schools JS in-browser practice exercises](https://www.w3schools.com/js/exercise_js.asp?filename=exercise_js_variables1)
+
+[W3Schools tutorial on objects](https://www.w3schools.com/js/js_object_definition.asp)
+
+</script></section><section  data-markdown><script type="text/template">
 ## Questions?</script></section></div>
         </div>
 
