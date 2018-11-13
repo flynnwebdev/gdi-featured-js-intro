@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>RevealJS : c:\Users\flynn\projects\gdi-featured-js-intro\class2.md</title>
+        <title>RevealJS : c:\Users\flynn\Projects\javascript-slides\class2.md</title>
         <link rel="stylesheet" href="css/reveal.css">
         <link rel="stylesheet" href="css/theme/moon.css" id="theme">
         
@@ -58,15 +58,23 @@
 # Introduction to JavaScript
 
 ## Loops, Arrays and Objects
-</script></section><section  data-markdown><script type="text/template">
+</script></section><section  data-markdown><script type="text/template">
+# RIP STAN LEE
+
+![](dist/img/stanlee.jpg)
+
+## MARVEL COMIC UNIVERSE CREATOR
+
+## 1922 - 2018
+
+---
  
 ### Loops
 
 ![Lego stormtrooper inside key ring](dist/img/hula-hoop.jpg)
 
 Photo credit: [Steve Pires](http://www.flickr.com/photos/steve_pires/8430087504/) [cc](http://creativecommons.org/licenses/by-nc/2.0/)
-</script></section><section  data-markdown><script type="text/template">
-
+</script></section><section  data-markdown><script type="text/template">
 ### While loops
 
 `[while](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/while)` will repeat the same code over and over until some condition is met.
@@ -79,8 +87,7 @@ while (bottlesOfBeer > 0) {
   bottlesOfBeer = bottlesOfBeer - 1
 }
 ```
-</script></section><section  data-markdown><script type="text/template">
-
+</script></section><section  data-markdown><script type="text/template">
 ### Infinite Loops
 
 Make sure something changes in the loop, or your loop will go on forever...
@@ -88,8 +95,7 @@ Make sure something changes in the loop, or your loop will go on forever...
 ![Spiral that goes on toward infinity](dist/img/infinite-loop.jpg)
 
 Photo credit: [Samuel John](http://www.flickr.com/photos/samueljohn/5348462863/) [cc](http://creativecommons.org/licenses/by-nc/2.0/)
-</script></section><section  data-markdown><script type="text/template">
-
+</script></section><section  data-markdown><script type="text/template">
 ### For loops
 
 `[for](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for)` loops are very similar, but you declare a counter in the statement.
@@ -100,8 +106,7 @@ for (let i = 1 i <= 10 i++) {
   console.log(i)
 }
 ```
-</script></section><section  data-markdown><script type="text/template">
-
+</script></section><section  data-markdown><script type="text/template">
 ### Loops and logic
 
 You can add other statements or logical operators inside the loops.
@@ -121,8 +126,7 @@ for (let i = 1 i <= 100 i++) {
   }
 }
 ```
-</script></section><section  data-markdown><script type="text/template">
-
+</script></section><section  data-markdown><script type="text/template">
 ### Break
 
 To exit a loop, use the `[break](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/break)` statement.
@@ -139,8 +143,7 @@ for (let i = 100 i <= 200 i++) {
   }
 }
 ```
-</script></section><section  data-markdown><script type="text/template">
-
+</script></section><section  data-markdown><script type="text/template">
 ### Let's Develop It
 
 Write a loop that gives you the 9's times table,  
@@ -149,15 +152,13 @@ from **9 x 1 = 9** to **9 x 12 = 108**.
   
 
 Finish early? Try using a loop inside a loop to write all the times tables, from 1 to 12.
-</script></section><section  data-markdown><script type="text/template">
-
+</script></section><section  data-markdown><script type="text/template">
 ### Arrays
 
 ![Group of kittens](dist/img/kitten-group.jpg)
 
 Photo credit: [Jesus Solana](http://www.flickr.com/photos/pasotraspaso/4444291348/) [cc](http://creativecommons.org/licenses/by-nc/2.0/)
-</script></section><section  data-markdown><script type="text/template">
-
+</script></section><section  data-markdown><script type="text/template">
 ### Arrays
 
 [Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) are ordered lists of values.
@@ -178,8 +179,7 @@ let lotteryNumbers = [33, 72, 64, 18, 17, 85]
 
 let myFavoriteThings = ['Broccoli', 1024, 'Sherlock']
 ```
-</script></section><section  data-markdown><script type="text/template">
-
+</script></section><section  data-markdown><script type="text/template">
 ### Array Length
 
 The `[length](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/length)` property tells you how many things are in an array.
@@ -190,8 +190,7 @@ let rainbowColors = ['Red', 'Orange', 'Yellow', 'Green',
 
 console.log(rainbowColors.length)
 ```
-</script></section><section  data-markdown><script type="text/template">
-
+</script></section><section  data-markdown><script type="text/template">
 ### Using Arrays
 
 You can access items with **bracket notation** by using the position of the item you want.
@@ -207,8 +206,7 @@ let lastColor  = rainbowColors[6]
   
 
 JS arrays are **zero-indexed**, so counting starts at 0.
-</script></section><section  data-markdown><script type="text/template">
-
+</script></section><section  data-markdown><script type="text/template">
 ### Changing arrays
 
 You can use bracket notation to change an item in an array
@@ -218,8 +216,7 @@ let myFavoriteThings = ['Broccoli', 1024, 'Sherlock']
 
 myFavoriteThings[0] = 'Asparagus'
 ```
-</script></section><section  data-markdown><script type="text/template">
-
+</script></section><section  data-markdown><script type="text/template">
 ### Expanding arrays
 
 Arrays do not have a fixed length. You can use `[push](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push)` to add something to an array.
@@ -229,8 +226,7 @@ let myFavoriteThings = ['Broccoli', 1024, 'Sherlock']
 
 myFavoriteThings.push('Dancing')
 ```
-</script></section><section  data-markdown><script type="text/template">
-
+</script></section><section  data-markdown><script type="text/template">
 ### Delete array elements
 
 The `delete` keyword can be used to destroy an array element. The remainder of the array is unchanged.
@@ -248,8 +244,7 @@ let arr = [ 'a', 'b', 'c', 'd' ]
 arr = arr.splice(2, 1)  // Remove 1 element, starting at 2
 console.log(arr)   // [ 'a', 'b', 'd' ]
 ```
-</script></section><section  data-markdown><script type="text/template">
-
+</script></section><section  data-markdown><script type="text/template">
 ### Let's Develop It
 
 Create an array of your favorite foods. Populate the array with at least 10 foods.
@@ -257,8 +252,7 @@ Create an array of your favorite foods. Populate the array with at least 10 food
 Print a few values to the page or console.
 
 Write code to remove one of the foods, then display the array again.
-</script></section><section  data-markdown><script type="text/template">
-
+</script></section><section  data-markdown><script type="text/template">
 ### Iterating through arrays
 
 Use a `for..of` loop to easily work with each item in an array.
@@ -271,8 +265,7 @@ for (let color of rainbowColors) {
   console.log(color)
 }
 ```
-</script></section><section  data-markdown><script type="text/template">
-
+</script></section><section  data-markdown><script type="text/template">
 ### Iterating through arrays
 
 Use a `for..in` loop if you need the index of each element.
@@ -285,15 +278,13 @@ for (let index in rainbowColors) {
   console.log(`${index} : ${rainbowColors[index]}`)
 }
 ```
-</script></section><section  data-markdown><script type="text/template">
-
+</script></section><section  data-markdown><script type="text/template">
 ### Let's Develop It
 
 Use a `for..of` loop to print a list of all your favorite foods.
 
 Also use a `for..in` loop to display the index next to each item. If the index is divisible by 3, display a line of hyphens after that item.
-</script></section><section  data-markdown><script type="text/template">
-
+</script></section><section  data-markdown><script type="text/template">
 ### Mapping arrays
 
 Just like Ruby, we can use `map` to generate a new array based on the values in another array.
@@ -302,8 +293,7 @@ Just like Ruby, we can use `map` to generate a new array based on the values in 
 let nums = [ 2, 3, 4 ]
 let squares = nums.map( x => x ** 2 )   // [ 4, 9, 16 ]
 ```
-</script></section><section  data-markdown><script type="text/template">
-
+</script></section><section  data-markdown><script type="text/template">
 ### Find in arrays
 
 We can `find` and `findIndex` to get the first element in an array where a given expression is true.
@@ -315,15 +305,13 @@ let fruit = [ 'Apple', 'Orange', 'Lemon', 'Watermelon', 'Banana' ]
 let item = fruit.find( x => x.length == 6 )   // Orange
 let index = fruit.findIndex( x => x.length == 6 )   // 1
 ```
-</script></section><section  data-markdown><script type="text/template">
-
+</script></section><section  data-markdown><script type="text/template">
 ### Let's Develop It
 
 Use `map` to generate an array of your favorite foods with each food in uppercase.
 
 Use `prompt` to get a search term from the user, then `find` it in the array. Display the found item, or a suitable message if not found.
-</script></section><section  data-markdown><script type="text/template">
-
+</script></section><section  data-markdown><script type="text/template">
 ### Filter an array
 
 Similar to `map`, but will only keep items where the given expression is true. The kept items are unmodified.
@@ -332,8 +320,7 @@ Similar to `map`, but will only keep items where the given expression is true. T
 let numbers = [ 5, 2, 8, 7, 12 ]
 let oddNumbers = numbers.filter( x => x % 2 == 1 )  // [ 5, 7 ]
 ```
-</script></section><section  data-markdown><script type="text/template">
-
+</script></section><section  data-markdown><script type="text/template">
 ### Join array elements
 
 We can use `join` to convert an array to a string with elements separated by a given delimiter.
@@ -342,22 +329,19 @@ We can use `join` to convert an array to a string with elements separated by a g
 let data = [ 12, 'Main', 'Road' ]
 let address = data.join(' ')   //  '12 Main Road'
 ```
-</script></section><section  data-markdown><script type="text/template">
-
+</script></section><section  data-markdown><script type="text/template">
 ### Let's Develop It
 
 Use `filter` to generate an array of your favorite foods, but only those that start with a vowel.
 
 Use `join` with a `<br>` delimiter to output the array as a list to the webpage.
-</script></section><section  data-markdown><script type="text/template">
-
+</script></section><section  data-markdown><script type="text/template">
 ### Objects
 
 ![Collection of matches](dist/img/matches.jpg)
 
 Photo credit: [Jirí Volejník](https://flic.kr/p/8RnSsa) [cc](http://creativecommons.org/licenses/by-nc-sa/2.0/)
-</script></section><section  data-markdown><script type="text/template">
-
+</script></section><section  data-markdown><script type="text/template">
 ### Objects
 
 [Objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_Objects) let us store a collection of properties.
@@ -380,8 +364,7 @@ let user = {
   birthday: {month: 10, day: 17}
 }
 ```
-</script></section><section  data-markdown><script type="text/template">
-
+</script></section><section  data-markdown><script type="text/template">
 ### Accessing Objects
 
 You can retrieve values using **[dot notation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Property_Accessors#Dot_notation)**
@@ -402,8 +385,7 @@ Or using **[bracket notation](https://developer.mozilla.org/en-US/docs/Web/JavaS
 ```
 let usersHair = user['hair']
 ```
-</script></section><section  data-markdown><script type="text/template">
-
+</script></section><section  data-markdown><script type="text/template">
 ### Changing Objects
 
 You can use dot or bracket notation to change properties
@@ -433,8 +415,7 @@ Or delete them
 ```
 delete user.married
 ```
-</script></section><section  data-markdown><script type="text/template">
-
+</script></section><section  data-markdown><script type="text/template">
 ### Arrays of Objects
 
 Because arrays can hold any data type, they can also hold objects.
@@ -449,8 +430,7 @@ for (let user of users) {
   console.log(user.name + ' is ' + user.age + ' years old.')
 }
 ```
-</script></section><section  data-markdown><script type="text/template">
-
+</script></section><section  data-markdown><script type="text/template">
 ### Objects
 
 Just like other data types, objects can be passed into functions:
@@ -470,8 +450,7 @@ function describeUser(user) {
 
 describeUser(jolene)
 ```
-</script></section><section  data-markdown><script type="text/template">
-
+</script></section><section  data-markdown><script type="text/template">
 ### Let's Develop It
 
 Create an object to hold information on your favorite recipe. It should have properties for:
@@ -487,8 +466,7 @@ Create an object to hold information on your favorite recipe. It should have pro
 Try displaying some information about your recipe.
 
 Bonus: Create a loop to list all the ingredients.
-</script></section><section  data-markdown><script type="text/template">
-
+</script></section><section  data-markdown><script type="text/template">
 ### Object methods
 
 Objects can also hold functions.
@@ -516,15 +494,13 @@ jolene.talk()
 
 jolene.eat('pizza')
 ```
-</script></section><section  data-markdown><script type="text/template">
-
+</script></section><section  data-markdown><script type="text/template">
 ### Let's Develop It
 
 Go back to your recipe object. Add a function called `letsCook` that says "I'm hungry! Let's cook..." with the name of your recipe title.
 
 Call your new method.
-</script></section><section  data-markdown><script type="text/template">
-
+</script></section><section  data-markdown><script type="text/template">
 ## Questions?</script></section></div>
         </div>
 
