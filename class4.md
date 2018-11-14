@@ -161,9 +161,9 @@ let firstCatName = catNames[0]
 
 ---
 
-# Let's Develop It
+## Let's Develop It
 
-## DOM Detective Exercise
+### DOM Detective Exercise
 
 Open a new browser tab and navigate to the [Coder Academy](https://coderacademy.edu.au/) homepage.
 
@@ -340,8 +340,8 @@ body.appendChild(newParagraph)
 
 ---
 
-# AFTERNOON CHALLENGE
+## AFTERNOON CHALLENGE
 
-## [Master of (DOM) Manipulation Exercise](/dist/dom_manipulation_exercise.html)
+### [Master of (DOM) Manipulation Exercise](/dist/dom_manipulation_exercise.html)
 
 ---
