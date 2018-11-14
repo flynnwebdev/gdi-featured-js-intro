@@ -35,7 +35,7 @@ highlightTheme : "agate"
 *   Defines the logical structure of an HTML document and how it is accessed and manipulated
 *   Anything found in an HTML or XML document can be accessed, changed, deleted, or added by a programmer using the DOM
 
-![](../images/domtree.png)
+![](dist/img/dom-tree.png)
 
 ---
 
@@ -161,7 +161,22 @@ let firstCatName = catNames[0]
 
 ---
 
-# [The DOM Detective Exercise](/jsweb/exercises/dom_detective)
+## Let's Develop It
+
+### DOM Detective Exercise
+
+Open a new browser tab and navigate to the [Coder Academy](https://coderacademy.edu.au/) homepage.
+
+Use the dev tools console and the DOM access methods you've learned so far to select the following:
+
+1. All images on the page (as a collection)
+2. All images that are children of an element with the class 'box' (as a collection)
+3. The subscribe form in the footer
+4. The email link in the footer
+5. The 'Short Courses' menu
+6. The Coder Academy logo in the header
+7. The second slide of the slideshow
+8. All `<a>` tags with `href` equal to `/fast-track`
 
 ---
 
@@ -261,7 +276,17 @@ If you're only changing the actual text of a node, [`textContent`](https://devel
 
 ---
 
-### [The Logo Hijack](/jsweb/exercises/dom_manipulation)
+## Let's Develop It
+### The Logo Hijack
+
+1. Navigate to the [UCSD](https://ucsd.edu/) website, and open up the Dev Tools console
+* Find the UCSD logo and store it in a variable.
+* Modify the source of the logo's image so that the image now points to the [UC Berkeley logo](http://www.berkeley.edu/images/uploads/logo-ucberkeley.png) instead.
+* Find the header and store it in a variable.
+* Change the header background color to 'gold'.
+* Find the 'About' menu link and store it in a variable.
+* Modify the text of the link so that it says "About Cal" instead.
+* Modify the link so that it points to [Cal's About page](http://www.berkeley.edu/about) instead.
 
 ---
 
@@ -294,17 +319,17 @@ body.appendChild(newParagraph)
 
 ---
 
-### [Master of (DOM) Manipulation Exercise](/jsweb/exercises/dom_manipulation_advanced)
+### [Master of (DOM) Manipulation Exercise](/dist/dom_manipulation_exercise.html)
 
 ---
 
 ### Resources
 
-[Mozilla `class` reference](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)
+[Eloquent Javascript DOM chapter](http://eloquentjavascript.net/14_dom.html)
 
-[W3Schools JS in-browser practice exercises](https://www.w3schools.com/js/exercise_js.asp?filename=exercise_js_variables1)
+[Mozilla DOM Guide](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction)
 
-[W3Schools tutorial on objects](https://www.w3schools.com/js/js_object_definition.asp)
+[W3Schools JS DOM practice exercises](https://www.w3schools.com/js/exercise_js.asp?filename=exercise_js_dom_html1)
 
 
 ---

@@ -4,3 +4,4 @@
 
 [Part 3 - Objects and Classes](https://flynnwebdev.github.io/javascript-slides/class3-export/#/)
 
+[Part 4 - The Document Object Model (DOM)](https://flynnwebdev.github.io/javascript-slides/class4-export/#/)
