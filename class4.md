@@ -292,7 +292,9 @@ If you're only changing the actual text of a node, [`textContent`](https://devel
 
 ### Creating DOM Nodes
 
-The `document` object also allows us to create new nodes from scratch:
+The `document` object also allows us to create new nodes from scratch.
+
+We use the `appendChild` method to attach a new node in the desired location in the DOM tree.
 
 ```
 document.createElement(tagName)
@@ -301,6 +303,8 @@ document.appendChild(childToAppend)
 
 ```
 
+Whenever the DOM is changed, the browser immediately updates the visible page to display the changes.
+
 ```
 let body = document.body
 let newImg = document.createElement('img')
@@ -308,6 +312,8 @@ newImg.src = 'http://placekitten.com/400/300'
 newImg.style.border = '1px solid black'
 body.appendChild(newImg)
 ```
+
+Child nodes can have their own children, thus creating a hierarchy.
 
 ```
 let newParagraph = document.createElement('p')
@@ -320,6 +326,14 @@ body.appendChild(newParagraph)
 ---
 
 ### [Master of (DOM) Manipulation Exercise](/dist/dom_manipulation_exercise.html)
+
+---
+
+# Events
+
+---
+
+
 
 ---
 
