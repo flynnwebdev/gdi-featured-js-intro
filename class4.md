@@ -29,7 +29,7 @@ highlightTheme : "agate"
 
 ---
 
-### What is the DOM?
+## What is the DOM?
 
 *   **Document Object Model** - i.e. a map of our HTML document
 *   Defines the logical structure of an HTML document and how it is accessed and manipulated
@@ -39,7 +39,7 @@ highlightTheme : "agate"
 
 ---
 
-### Inspecting the DOM
+## Inspecting the DOM
 
 *   [Google Chrome](https://developers.google.com/chrome-developer-tools/docs/elements) or [Mozilla Firefox](https://developer.mozilla.org/en/Tools/Inspector)
     *   Right-click on a web page and select "Inspect Element"
@@ -52,7 +52,7 @@ highlightTheme : "agate"
 
 ---
 
-### Accessing the DOM
+## Accessing the DOM
 
   
 
@@ -70,7 +70,7 @@ It allows you to access and manipulate the DOM of the current web page:
 
 ---
 
-### DOM Access Methods
+## DOM Access Methods
 
   
 
@@ -105,7 +105,7 @@ document.querySelectorAll(cssQuery)
 
 ---
 
-### Selecting Nodes From the DOM
+## Selecting Nodes From the DOM
 
 HTML:
 
@@ -137,7 +137,7 @@ let againAlsoHobbies = document.querySelectorAll('ul li.hobby')
 
 ---
 
-### Returning Element vs. Array of Elements
+## Returning Element vs. Array of Elements
 
   
 
@@ -161,9 +161,9 @@ let firstCatName = catNames[0]
 
 ---
 
-## Let's Develop It
+# Let's Develop It
 
-### DOM Detective Exercise
+## DOM Detective Exercise
 
 Open a new browser tab and navigate to the [Coder Academy](https://coderacademy.edu.au/) homepage.
 
@@ -180,7 +180,7 @@ Use the dev tools console and the DOM access methods you've learned so far to se
 
 ---
 
-### Manipulating a DOM Node's Attributes
+## Manipulating a DOM Node's Attributes
 
 You can access and change the attributes of a DOM node using dot notation.
 
@@ -208,7 +208,7 @@ catImage.className = "landscape"
 
 ---
 
-### Manipulating a DOM Node's Styles
+## Manipulating a DOM Node's Styles
 
 You can access and change the styles of a DOM nodes via the `style` property. CSS property names with a "-" must be camelCased and number properties must have a unit.
 
@@ -235,7 +235,7 @@ pageNode.style.paddingTop = '10px'
 
 ---
 
-### Manipulating a DOM Node's Inner HTML
+## Manipulating a DOM Node's Inner HTML
 
 Each DOM node has an `innerHTML` attribute that contains the HTML of all its children:
 
@@ -261,7 +261,7 @@ pageNode.innerHTML += "P.S. Please do write back."
 
 ---
 
-### `innerHTML` vs. `textContent`
+## `innerHTML` vs. `textContent`
 
 If you're only changing the actual text of a node, [`textContent`](https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent) may be a better choice.
 
@@ -290,7 +290,7 @@ If you're only changing the actual text of a node, [`textContent`](https://devel
 
 ---
 
-### Creating DOM Nodes
+## Creating DOM Nodes
 
 The `document` object also allows us to create new nodes from scratch.
 
@@ -325,19 +325,7 @@ body.appendChild(newParagraph)
 
 ---
 
-### [Master of (DOM) Manipulation Exercise](/dist/dom_manipulation_exercise.html)
-
----
-
-# Events
-
----
-
-
-
----
-
-### Resources
+## Resources
 
 [Eloquent Javascript DOM chapter](http://eloquentjavascript.net/14_dom.html)
 
@@ -348,4 +336,12 @@ body.appendChild(newParagraph)
 
 ---
 
-### Questions?
+# Questions?
+
+---
+
+# AFTERNOON CHALLENGE
+
+## [Master of (DOM) Manipulation Exercise](/dist/dom_manipulation_exercise.html)
+
+---
