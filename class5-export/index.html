@@ -1,8 +1,40 @@
----
-theme : "moon"
-highlightTheme : "agate"
----
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>RevealJS : c:\Users\flynn\Projects\javascript-slides\class5.md</title>
+        <link rel="stylesheet" href="css/reveal.css">
+        <link rel="stylesheet" href="css/theme/moon.css" id="theme">
+        
+       
+        <!-- For syntax highlighting -->
+        <link rel="stylesheet" href="lib/css/agate.css">
 
+        
+
+        <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+        <script>
+          document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+        </script>
+
+        <style type="text/css">
+            @page {    
+              margin: 0;
+              size: auto; 
+            }
+        </style>
+
+        <script>
+         if(window.location.search.match( /print-pdf-now/gi )) {
+           window.print();
+         }
+      </script>
+
+    </head>
+    <body>
+
+        <div class="reveal">
+            <div class="slides"><section  data-markdown><script type="text/template">
 <style>
     .reveal .slides {
       zoom: 1 !important;
@@ -26,9 +58,7 @@ highlightTheme : "agate"
 # JavaScript
 
 ## JSON &amp; Events
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ## What is JSON?
 
 * JSON stands for JavaScript Object Notation
@@ -40,9 +70,7 @@ highlightTheme : "agate"
 * JSON is language independent
 
   * JSON uses JavaScript syntax, but the JSON format is text only. Text can be read and used as a data format by any programming language.
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ## Why use JSON?
 
 Since the JSON format is text only, it can easily be sent to and from a server, and used as a data format by any programming language.
@@ -52,9 +80,7 @@ JavaScript has a built in function to convert a string, written in JSON format, 
 ```JSON.parse()```
 
 So, if you receive data from a server, in JSON format, you can use it like any other JavaScript object.
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ## JSON Syntax
 
 JSON is based on Javascript objects, and the syntax is near identical.
@@ -78,9 +104,7 @@ let personJSON = '{
 * Key-value pairs separated by a colon
 * Unlike JS objects, **keys must be delimited by double quotes**
 * Remember that JSON is just a string representation of an object, not an object itself
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ## Parsing JSON
 
 Given a valid JSON string, we can parse it to generate Javascript objects that we can use in our code.
@@ -103,9 +127,7 @@ console.log(person.hobbies[1])  // Reading
 ```
 
 The JSON object is built-in to the browser.
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ## Stringify
 
 We can also do the reverse and convert Javascript objects to a JSON string.
@@ -126,17 +148,13 @@ console.log(JSON.stringify(books))
 // [{"title":"IT","author":"Stephen King"},{"title":"Foundation","author":"Isaac Asimov"}]
 
 ```
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ## Events
 
 ![Lego Magician](dist/img/magician.jpg)
 
 Photo credit: [Eva Peris](https://flic.kr/p/9hBrtv) [cc](http://creativecommons.org/licenses/by-nc/2.0/)
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ## Events
 
 An **[event](https://developer.mozilla.org/en-US/docs/Web/Events)** is an object that is sent when actions take place on your webpage, most often when a user interacts with your webpage.
@@ -151,9 +169,7 @@ element.addEventListener('click', function(event) {
 })
 
 ```
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ## Types of Events
 
 There are a [variety of events](https://developer.mozilla.org/en-US/docs/Web/Events). Some of the more common events are:
@@ -165,9 +181,7 @@ There are a [variety of events](https://developer.mozilla.org/en-US/docs/Web/Eve
 *   **[load](https://developer.mozilla.org/en-US/docs/Web/Events/load_(ProgressEvent%29) :** Occurs when a document has been loaded
 *   **[focus](https://developer.mozilla.org/en-US/docs/Web/Events/focus):** Occurs when an element gets focus
 *   **[blur](https://developer.mozilla.org/en-US/docs/Web/Events/blur):** Occurs when an element loses focus
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ## Calling Functions from HTML
 
 You can call a function directly from your HTML code:
@@ -182,9 +196,7 @@ function sayHi (event) {
   alert('Hi!')
 }
 ```
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ## Calling Functions from JavaScript
 
 You can call a function from the addEventListener:
@@ -213,23 +225,17 @@ let sayHi = function (event) {
 
 button.addEventListener("click", sayHi)
 ```
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ## Let's Develop It
 
 Go back to the sample files you downloaded earlier.
 
 Make some JavaScript code fire after a `mouseover` event.
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ## Preventing Defaults
 
 ![A cat resisting a bath](dist/img/donotwant.jpg)
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ## Preventing Defaults
 
 Elements like links and checkboxes have default behaviors determined by the browser. However, the `event` object has a built-in method to [prevent the default behavior](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault)
@@ -251,17 +257,13 @@ link.addEventListener("click", function(event) {
 })
 
 ```
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ## currentTarget
 
 ![Lighted arrow sign pointed downward](dist/img/arrow.jpg)
 
 Photo credit: [Alan Berning](https://flic.kr/p/6ei68A) [cc](http://creativecommons.org/licenses/by-nc/2.0/)
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ## currentTarget
 
 The event's `[currentTarget](https://developer.mozilla.org/en-US/docs/Web/API/Event/currentTarget)` references the element the event listener was attached to.
@@ -286,9 +288,7 @@ myButton.addEventListener("click", function(event) {
 ```
 
 You may also see code that references the keyword `[this](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this)` as the "target".
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ## Let's Develop It
 
 Write code that targets this link:
@@ -299,17 +299,13 @@ Write code that targets this link:
 ```
 
 When a user clicks the link, the page should display an error message instead of going to the Coder Academy homepage.
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ## User Input
 
 ![Comment box](dist/img/comment-box.jpg)
 
 Photo credit: [Rym DeCoster](https://flic.kr/p/fnZ4RT) [cc](http://creativecommons.org/licenses/by-nc/2.0/)
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ## Forms
 
 You can collect information from users to use in your code. The most common method is an HTML form
@@ -324,9 +320,7 @@ You can collect information from users to use in your code. The most common meth
 </form>
 
 ```
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ## Retrieving Form Data
 
 You retrieve the values of form elements using the `value` method.
@@ -338,9 +332,7 @@ console.log(name)
 ```
 
 You can retrieve the value of a form at any time. Even when an event like `blur` is triggered (when a form element loses focus).
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ## Radio Buttons
 
 Radio buttons usually do not have IDs, so you will need to use a `for` loop to get the value on each radio:
@@ -359,9 +351,7 @@ for (let i = 0 i < length i++) {
 }
 
 ```
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ## Submit buttons
 
 If you are going to retrieve form values with the submit button, be sure to prevent the default action!
@@ -377,15 +367,11 @@ submitButton.addEventListener("click", function(event) {
 })
 
 ```
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ## Let's Develop It
 
 Collect a value from the input box on the page. Use it inside a function of some kind. For example, collect a number and multiply it by five or collect a name and display a greeting.
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ## Resources
 
 ### EVENTS
@@ -401,16 +387,96 @@ Collect a value from the input box on the page. Use it inside a function of some
 [Mozilla JSON Reference](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON)
 
 [W3Schools JSON tutorial](https://www.w3schools.com/js/js_json_intro.asp)
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 # Questions?
-
----
-
+</script></section><section  data-markdown><script type="text/template">
 ## AFTERNOON CHALLENGE
 
 ### [Canvas Unit: JSON](https://coderacademy.instructure.com/courses/144/pages/unit-json)
 
 ### [Canvas Unit: DOM &amp; Web API](https://coderacademy.instructure.com/courses/144/pages/unit-dom-and-web-apis)
 
+</script></section></div>
+        </div>
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.js"></script>
+
+        <script>
+            function extend() {
+              var target = {};
+              for (var i = 0; i < arguments.length; i++) {
+                var source = arguments[i];
+                for (var key in source) {
+                  if (source.hasOwnProperty(key)) {
+                    target[key] = source[key];
+                  }
+                }
+              }
+              return target;
+            }
+            // Optional libraries used to extend on reveal.js
+            var deps = [
+              { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+              { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector('[data-markdown]'); } },
+              { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector('[data-markdown]'); } },
+              { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+              { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+              { src: 'plugin/math/math.js', async: true }
+            ];
+            // default options to init reveal.js
+            var defaultOptions = {
+              controls: true,
+              progress: true,
+              history: true,
+              center: true,
+              transition: 'default',
+              dependencies: deps
+            };
+            // options from URL query string
+            var queryOptions = Reveal.getQueryHash() || {};
+            var options = {
+  "notesSeparator": "note:",
+  "separator": "^[\r\n?|\n]---[\r\n?|\n]$",
+  "verticalSeparator": "^[\r\n?|\n]--[\r\n?|\n]$",
+  "theme": "moon",
+  "highlightTheme": "agate",
+  "controls": true,
+  "progress": true,
+  "slideNumber": false,
+  "history": true,
+  "keyboard": true,
+  "overview": true,
+  "center": true,
+  "touch": true,
+  "loop": false,
+  "rtl": false,
+  "shuffle": false,
+  "fragments": true,
+  "embedded": false,
+  "help": true,
+  "showNotes": false,
+  "autoSlide": 0,
+  "autoSlideStoppable": true,
+  "mouseWheel": false,
+  "hideAddressBar": true,
+  "previewLinks": false,
+  "transition": "default",
+  "transitionSpeed": "default",
+  "backgroundTransition": "default",
+  "viewDistance": 3,
+  "parallaxBackgroundImage": "",
+  "parallaxBackgroundSize": "",
+  "parallaxBackgroundHorizontal": null,
+  "parallaxBackgroundVertical": null,
+  "slideExplorerEnabled": true,
+  "browserPath": null,
+  "attributes": ""
+};
+            options = extend(defaultOptions, options, queryOptions);
+            Reveal.initialize(options);
+
+        </script>
+        
+    </body>
+</html>

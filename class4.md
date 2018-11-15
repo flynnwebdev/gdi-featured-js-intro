@@ -344,4 +344,3 @@ body.appendChild(newParagraph)
 
 ### [Master of (DOM) Manipulation Exercise](/javascript-slides/dist/dom_manipulation_exercise.html)
 
----
