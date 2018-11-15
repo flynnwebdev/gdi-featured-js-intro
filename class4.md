@@ -342,6 +342,6 @@ body.appendChild(newParagraph)
 
 ## AFTERNOON CHALLENGE
 
-### [Master of (DOM) Manipulation Exercise](/dist/dom_manipulation_exercise.html)
+### [Master of (DOM) Manipulation Exercise](/javascript-slides/dist/dom_manipulation_exercise.html)
 
 ---
