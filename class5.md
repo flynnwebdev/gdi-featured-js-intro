@@ -45,13 +45,11 @@ highlightTheme : "agate"
 
 ## Why use JSON?
 
-Since the JSON format is text only, it can easily be sent to and from a server, and used as a data format by any programming language.
+The HTTP protocol only supports text, so any kind of binary data (eg. file uploads, objects, etc...) must be encoded in a text format first.
 
-JavaScript has a built in function to convert a string, written in JSON format, into native JavaScript objects:
+Since the JSON format is text only, it can easily be sent to and from a server, stored in a file, imported and exported by various software, and used as a data format by any programming language.
 
-```JSON.parse()```
-
-So, if you receive data from a server, in JSON format, you can use it like any other JavaScript object.
+Another advantage is that JSON is human-readable and human-editable.
 
 ---
 
