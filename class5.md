@@ -216,9 +216,11 @@ button.addEventListener("click", sayHi)
 
 ## Let's Develop It
 
-Go back to the sample files you downloaded earlier.
+Create a new HTML file that loads and displays an image from [placekitten.com](http://placekitten.com/) or similar.
 
-Make some JavaScript code fire after a `mouseover` event.
+Log a console message when you hover the mouse over the image, and another message when the mouse leaves the image.
+
+Pop up an alert box if the image is clicked on.
 
 ---
 
@@ -262,7 +264,7 @@ Photo credit: [Alan Berning](https://flic.kr/p/6ei68A) [cc](http://creativecommo
 
 ## currentTarget
 
-The event's `[currentTarget](https://developer.mozilla.org/en-US/docs/Web/API/Event/currentTarget)` references the element the event listener was attached to.
+The event's [currentTarget](https://developer.mozilla.org/en-US/docs/Web/API/Event/currentTarget) references the element the event listener was attached to.
 
 Our button in HTML:
 
@@ -283,7 +285,7 @@ myButton.addEventListener("click", function(event) {
 }
 ```
 
-You may also see code that references the keyword `[this](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this)` as the "target".
+You may also see code that references the keyword [this](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this) as the "target".
 
 ---
 
@@ -292,7 +294,7 @@ You may also see code that references the keyword `[this](https://developer.mozi
 Write code that targets this link:
 
 ```
-<a href="http://coderacademy.edu.au/" id="gdiLink">Coder Academy</a>
+<a href="http://coderacademy.edu.au/" id="caLink">Coder Academy</a>
 
 ```
 
@@ -379,6 +381,8 @@ submitButton.addEventListener("click", function(event) {
 ---
 
 ## Let's Develop It
+
+Create a simple form with an input box and a submit button.
 
 Collect a value from the input box on the page. Use it inside a function of some kind. For example, collect a number and multiply it by five or collect a name and display a greeting.
 
