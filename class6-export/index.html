@@ -1,8 +1,40 @@
----
-theme : "moon"
-highlightTheme : "agate"
----
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>RevealJS : c:\Users\flynn\Projects\javascript-slides\class6.md</title>
+        <link rel="stylesheet" href="css/reveal.css">
+        <link rel="stylesheet" href="css/theme/moon.css" id="theme">
+        
+       
+        <!-- For syntax highlighting -->
+        <link rel="stylesheet" href="lib/css/agate.css">
 
+        
+
+        <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+        <script>
+          document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+        </script>
+
+        <style type="text/css">
+            @page {    
+              margin: 0;
+              size: auto; 
+            }
+        </style>
+
+        <script>
+         if(window.location.search.match( /print-pdf-now/gi )) {
+           window.print();
+         }
+      </script>
+
+    </head>
+    <body>
+
+        <div class="reveal">
+            <div class="slides"><section  data-markdown><script type="text/template">
 <style>
     .reveal .slides {
       zoom: 1 !important;
@@ -29,8 +61,7 @@ highlightTheme : "agate"
 
 
 # Intro to jQuery
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 ## Review:
 
@@ -50,8 +81,7 @@ var myObject = {
 }
 ```
 					
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 ## Review:
 
@@ -67,8 +97,7 @@ document.querySelectorAll('a')
 document.querySelector('img')
 ```
 					
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 ## What's a library?
 
@@ -81,8 +110,7 @@ math.sum(array)
 math.pow(num, num)
 math.factorial(num)
 ```
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 ## What's a library?
 
@@ -92,19 +120,17 @@ Call functions from that library
 
 ```
 <body>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/3.11.4/math.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/3.11.4/math.js">__SCRIPT_END__
   <script>
     var answer = math.sum(2, 2)
     alert(answer)
-  </script>
+  __SCRIPT_END__
 </body>
 ```
-				
----
+				</script></section><section  data-markdown><script type="text/template">
 
 ## [Let's Develop It!](jquery/exercises/videoplayer_library.html)
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 ## jQuery:
 
@@ -117,8 +143,7 @@ Abstract on top of cross-browser differences.
 [![](jquery/images/jquery.png)](http://jquery.com/)
 
 Open source, big community
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 ## jQuery: Why?
 
@@ -138,8 +163,7 @@ $('img').hide()
 ```
 
 shorter, cross-browser
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 ## jQuery: Why?
 
@@ -163,8 +187,7 @@ newP.addClass('special')
 $('div.header').append(newP)
 ```
 					
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 ## jQuery:
 
@@ -189,8 +212,7 @@ The above yields:
 ```
 
 shorter, cross-browser
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 ## jQuery Recipe
 
@@ -211,8 +233,7 @@ $('p').addClass('special')
 Step 3: Admire your results!
 
 shorter, cross-browser
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 ```
 $('p').addClass('special')
@@ -233,8 +254,7 @@ addClass('special')
 Built-in jQuery method that adds the specified class to all elements in the collection.  
 
 [Read the docs here.](http://api.jquery.com/addClass/)
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 ## jQuery:
 
@@ -278,8 +298,7 @@ $('#main .intro')
 ```
 
 shorter, cross-browser
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 ## jQuery:
 
@@ -302,8 +321,7 @@ We can store it...
 ```
 var myLink = $('a#yahoo')
 ```
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 ## jQuery:
 
@@ -342,8 +360,7 @@ myLink.css('font-size')
 ```
 
 shorter, cross-browser
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 ## jQuery:
 
@@ -370,8 +387,7 @@ And we'll get this:
 ```
 
 shorter, cross-browser
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 ## jQuery Recipe:
 
@@ -396,8 +412,7 @@ $('body').append(p)
 ```
 
 shorter, cross-browser
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 ## jQuery:
 
@@ -430,8 +445,7 @@ Just like with the DOM API, we can store a reference to our new element in memor
 ```
 var myParagraph = $('<p class="intro">Welcome!</p>')
 ```
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 ## jQuery:
 
@@ -446,8 +460,7 @@ var myParagraph = $('<p class="intro">Welcome!</p>')
 ```
 myParagraph.css('font-size','4em')
 ```
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 ## jQuery:
 
@@ -462,8 +475,7 @@ $('body').append(myParagraph)
 ```
 $('body').prepend(myParagraph)
 ```
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 ## Regular DOM nodes to jQuery objects
 
@@ -489,8 +501,7 @@ for (var para of paragraphs) {
 ```
 
 shorter, cross-browser
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 ## jQuery:
 
@@ -502,21 +513,19 @@ Include from a CDN using a `<script>` tag on the page.
 <html>
 <body>
   <h1>Hi!</h1>
-  <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js">__SCRIPT_END__
   <script>
       // Your code here
-  </script>
+  __SCRIPT_END__
 </body>
 </html>
 ```
 
 shorter, cross-browser
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 ## [Let's Develop It!](jquery/exercises/videoplayer_jquery.html)
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 ## Resources
 
@@ -526,14 +535,96 @@ shorter, cross-browser
 
 [Official Learn jQuery](https://learn.jquery.com/)
 
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 # Questions?
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 ## AFTERNOON CHALLENGE
 
 ### [Canvas Unit: jQuery](https://coderacademy.instructure.com/courses/144/pages/unit-jquery)
 
+</script></section></div>
+        </div>
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.js"></script>
+
+        <script>
+            function extend() {
+              var target = {};
+              for (var i = 0; i < arguments.length; i++) {
+                var source = arguments[i];
+                for (var key in source) {
+                  if (source.hasOwnProperty(key)) {
+                    target[key] = source[key];
+                  }
+                }
+              }
+              return target;
+            }
+            // Optional libraries used to extend on reveal.js
+            var deps = [
+              { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+              { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector('[data-markdown]'); } },
+              { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector('[data-markdown]'); } },
+              { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+              { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+              { src: 'plugin/math/math.js', async: true }
+            ];
+            // default options to init reveal.js
+            var defaultOptions = {
+              controls: true,
+              progress: true,
+              history: true,
+              center: true,
+              transition: 'default',
+              dependencies: deps
+            };
+            // options from URL query string
+            var queryOptions = Reveal.getQueryHash() || {};
+            var options = {
+  "notesSeparator": "note:",
+  "separator": "^[\r\n?|\n]---[\r\n?|\n]$",
+  "verticalSeparator": "^[\r\n?|\n]--[\r\n?|\n]$",
+  "theme": "moon",
+  "highlightTheme": "agate",
+  "controls": true,
+  "progress": true,
+  "slideNumber": false,
+  "history": true,
+  "keyboard": true,
+  "overview": true,
+  "center": true,
+  "touch": true,
+  "loop": false,
+  "rtl": false,
+  "shuffle": false,
+  "fragments": true,
+  "embedded": false,
+  "help": true,
+  "showNotes": false,
+  "autoSlide": 0,
+  "autoSlideStoppable": true,
+  "mouseWheel": false,
+  "hideAddressBar": true,
+  "previewLinks": false,
+  "transition": "default",
+  "transitionSpeed": "default",
+  "backgroundTransition": "default",
+  "viewDistance": 3,
+  "parallaxBackgroundImage": "",
+  "parallaxBackgroundSize": "",
+  "parallaxBackgroundHorizontal": null,
+  "parallaxBackgroundVertical": null,
+  "slideExplorerEnabled": true,
+  "browserPath": null,
+  "attributes": ""
+};
+            options = extend(defaultOptions, options, queryOptions);
+            Reveal.initialize(options);
+
+        </script>
+        
+    </body>
+</html>
