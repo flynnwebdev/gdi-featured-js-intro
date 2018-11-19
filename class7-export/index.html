@@ -1,8 +1,40 @@
----
-theme : "moon"
-highlightTheme : "agate"
----
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>RevealJS : c:\Users\flynn\projects\gdi-featured-js-intro\class7.md</title>
+        <link rel="stylesheet" href="css/reveal.css">
+        <link rel="stylesheet" href="css/theme/moon.css" id="theme">
+        
+       
+        <!-- For syntax highlighting -->
+        <link rel="stylesheet" href="lib/css/agate.css">
 
+        
+
+        <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+        <script>
+          document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+        </script>
+
+        <style type="text/css">
+            @page {    
+              margin: 0;
+              size: auto; 
+            }
+        </style>
+
+        <script>
+         if(window.location.search.match( /print-pdf-now/gi )) {
+           window.print();
+         }
+      </script>
+
+    </head>
+    <body>
+
+        <div class="reveal">
+            <div class="slides"><section  data-markdown><script type="text/template">
 <style>
     .reveal .slides {
       zoom: 1 !important
@@ -28,9 +60,8 @@ highlightTheme : "agate"
 </style>
 
 
-# Callbacks and More jQuery
-
----
+# More jQuery
+</script></section><section  data-markdown><script type="text/template">
 
 ## JS Callbacks
 
@@ -51,8 +82,7 @@ textAFriend("John", sayHello)
 ```
 
 Callbacks are useful when we want to do something when a long running process finishes, but don't want to have the rest of our code wait for it.
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 ## JS Callbacks
 
@@ -79,8 +109,7 @@ console.log('This can execute while waiting for say() to finish')
 Callbacks allow asynchronous execution of code.
 
 They also allow us to re-use the base function but have different things happen when it finishes.
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 ## Events
 
@@ -102,8 +131,7 @@ $('button').on('click', function () {
 *   [Keyboard Events](http://api.jquery.com/category/events/keyboard-events/) `'keydown'` `'keypress'` `'keyup'`
 *   [Mouse Events](http://api.jquery.com/category/events/mouse-events/) `'click'` `'mousedown'` `'mouseup'` `'mousemove'`
 *   [Form Events](http://api.jquery.com/category/events/form-events/) `'change'` `'focus'` `'blur'`
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 ## Events
 
@@ -124,8 +152,7 @@ $('form').on('submit', function (event) {
   console.log('Not submitting, time to validate!')
 })
 ```
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 ## Effects & Animation
   
@@ -145,16 +172,14 @@ $('button').mouseover(function(){
   $(this).css('color', 'red')
 })
 ```
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 ## Let's Develop It!
 
 [Events and Animation Exercise](exercises/exercise_events.html)
 
 Work in pairs, and don't forget to use the [jQuery documentation](https://api.jquery.com/)
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 ## jQuery Plugins
 
@@ -167,8 +192,7 @@ Work in pairs, and don't forget to use the [jQuery documentation](https://api.jq
   
 
 [Which plugin should you pick?](http://blog.pamelafox.org/2013/07/which-javascript-library-should-i-pick.html)
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 ## jQuery Plugin Usage
 
@@ -191,8 +215,7 @@ Work in pairs, and don't forget to use the [jQuery documentation](https://api.jq
 ```
 $('table').tableSorter()
 ```
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 ## Let's Develop It!
 
@@ -201,8 +224,7 @@ $('table').tableSorter()
 Use Slick to convert your list of videos from the previous exercise into a slider.
 
 Work in pairs. You'll need to spend some time reading the linked site to figure out how to install and use the plugin.
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 ## jQuery Patterns
 
@@ -212,8 +234,7 @@ Work in pairs. You'll need to spend some time reading the linked site to figure 
 ```
 let $mylet = $('#myNode')
 ```
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 ## Chaining
 
@@ -238,8 +259,7 @@ banner.css('color', 'red')
        .html('Welcome!')
        .show()
 ```
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 ## DOM Readiness
 
@@ -249,14 +269,13 @@ banner.css('color', 'red')
 <head>
   <script>
     $('body').append( myNode )
-  </script>
+  __SCRIPT_END__
 </head>
 
 ```
 
 The code breaks because it will execute before the body node actually exists.
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 ## DOM Readiness
 
@@ -268,22 +287,20 @@ The code breaks because it will execute before the body node actually exists.
     $(document).ready(function() {
       // do something when the DOM is fully loaded
     })
-  </script>
+  __SCRIPT_END__
 </head>
 
 ```
 
 This pattern can also be used in an external .js file.
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 ## jQuery
 
 #### ...is great.  
   
 But do not become dependent on it!
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 ## Resources
 
@@ -293,12 +310,10 @@ But do not become dependent on it!
 
 [Official Learn jQuery](https://learn.jquery.com/)
 
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 # Questions?
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 ## AFTERNOON CHALLENGE
 
@@ -306,3 +321,87 @@ But do not become dependent on it!
 
 ### [Canvas Unit: jQuery](https://coderacademy.instructure.com/courses/144/pages/unit-jquery)
 
+</script></section></div>
+        </div>
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.js"></script>
+
+        <script>
+            function extend() {
+              var target = {};
+              for (var i = 0; i < arguments.length; i++) {
+                var source = arguments[i];
+                for (var key in source) {
+                  if (source.hasOwnProperty(key)) {
+                    target[key] = source[key];
+                  }
+                }
+              }
+              return target;
+            }
+            // Optional libraries used to extend on reveal.js
+            var deps = [
+              { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+              { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector('[data-markdown]'); } },
+              { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector('[data-markdown]'); } },
+              { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+              { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+              { src: 'plugin/math/math.js', async: true }
+            ];
+            // default options to init reveal.js
+            var defaultOptions = {
+              controls: true,
+              progress: true,
+              history: true,
+              center: true,
+              transition: 'default',
+              dependencies: deps
+            };
+            // options from URL query string
+            var queryOptions = Reveal.getQueryHash() || {};
+            var options = {
+  "notesSeparator": "note:",
+  "separator": "^[\r\n?|\n]---[\r\n?|\n]$",
+  "verticalSeparator": "^[\r\n?|\n]--[\r\n?|\n]$",
+  "theme": "moon",
+  "highlightTheme": "agate",
+  "controls": true,
+  "progress": true,
+  "slideNumber": false,
+  "history": true,
+  "keyboard": true,
+  "overview": true,
+  "center": true,
+  "touch": true,
+  "loop": false,
+  "rtl": false,
+  "shuffle": false,
+  "fragments": true,
+  "embedded": false,
+  "help": true,
+  "showNotes": false,
+  "autoSlide": 0,
+  "autoSlideStoppable": true,
+  "mouseWheel": false,
+  "hideAddressBar": true,
+  "previewLinks": false,
+  "transition": "default",
+  "transitionSpeed": "default",
+  "backgroundTransition": "default",
+  "viewDistance": 3,
+  "parallaxBackgroundImage": "",
+  "parallaxBackgroundSize": "",
+  "parallaxBackgroundHorizontal": null,
+  "parallaxBackgroundVertical": null,
+  "slideExplorerEnabled": true,
+  "browserPath": null,
+  "attributes": ""
+};
+            options = extend(defaultOptions, options, queryOptions);
+            Reveal.initialize(options);
+
+        </script>
+        
+    </body>
+</html>

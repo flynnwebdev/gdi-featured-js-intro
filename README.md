@@ -9,3 +9,6 @@
 [Part 5 - JSON and Events](https://flynnwebdev.github.io/javascript-slides/class5-export/#/)
 
 [Part 6 - jQuery](https://flynnwebdev.github.io/javascript-slides/class6-export/#/)
+
+[Part 7 - Callbacks and More jQuery](https://flynnwebdev.github.io/javascript-slides/class7-export/#/)
+
