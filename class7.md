@@ -5,25 +5,25 @@ highlightTheme : "agate"
 
 <style>
     .reveal .slides {
-      zoom: 1 !important
-      height: auto !important
+      zoom: 1 !important;
+      height: auto !important;
     }
     .reveal .slides section {
-      top: 50% !important
-      transform: translateY(-50%) !important
-      zoom: 0.75 !important
+      top: 50% !important;
+      transform: translateY(-50%) !important;
+      zoom: 0.75 !important;
     }
     .reveal pre {
-        width: 100% !important
+        width: 100% !important;
     }
     .reveal section pre code {
-        overflow: hidden !important
-        max-height: none !important
-        white-space: pre-wrap !important
+        overflow: hidden !important;
+        max-height: none !important;
+        white-space: pre-wrap !important;
     }
-    .reveal img{
-        border: none !important
-        background: none !important
+    .reveal img {
+        border: none !important;
+        background: none !important;
     }
 </style>
 
