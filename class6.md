@@ -21,12 +21,14 @@ highlightTheme : "agate"
         max-height: none !important;
         white-space: pre-wrap !important;
     }
+    .reveal img{
+        border: none !important;
+        background: none !important;
+    }
 </style>
 
 
 # Intro to jQuery
-
-Slides: [http://www.teaching-materials.org/jquery/](http://www.teaching-materials.org/jquery/)
 
 ---
 
@@ -36,10 +38,11 @@ Slides: [http://www.teaching-materials.org/jquery/](http://www.teaching-material
 
 Our favorite Data Types
 
-						```var myString = 'This is a string!';
-var myInteger = 1;
-var myBoolean = true;
-var myArray = ['string', 1, myString, true];
+```
+var myString = 'This is a string!'
+var myInteger = 1
+var myBoolean = true
+var myArray = ['string', 1, myString, true]
 var myObject = {
   name: 'Pamela',
   adjective: 'Cool',
@@ -56,11 +59,12 @@ var myObject = {
 
 Traversing the DOM with JavaScript
 
-						```document.getElementById('presentation');
-document.getElementsByClassName('future');
-document.getElementsByTagName('body');
-document.querySelectorAll('a');
-document.querySelector('img');
+```
+document.getElementById('presentation')
+document.getElementsByClassName('future')
+document.getElementsByTagName('body')
+document.querySelectorAll('a')
+document.querySelector('img')
 ```
 					
 
@@ -73,9 +77,9 @@ A collection of reusable methods for a particular purpose.
 A math library might have functions like:
 
 ```
-math.sum(array);
-math.pow(num, num);
-math.factorial(num);
+math.sum(array)
+math.pow(num, num)
+math.factorial(num)
 ```
 
 ---
@@ -90,15 +94,15 @@ Call functions from that library
 <body>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/3.11.4/math.js"></script>
   <script>
-    var answer = math.sum(2, 2);
-    alert(answer);
+    var answer = math.sum(2, 2)
+    alert(answer)
   </script>
 </body>
 ```
 				
 ---
 
-## [Exercise Time!](/_deprecated/jquery/exercises/videoplayer_library)
+## [Let's Develop It!](jquery/exercises/videoplayer_library)
 
 ---
 
@@ -110,7 +114,7 @@ Write less code for common tasks.
 
 Abstract on top of cross-browser differences.
 
-[![](images/jquery.png)](http://jquery.com/)
+[![](jquery/images/jquery.png)](http://jquery.com/)
 
 Open source, big community
 
@@ -118,21 +122,20 @@ Open source, big community
 
 ## jQuery: Why?
 
-No library:]
+No library:
 
 ```
-var elems = document.getElementsByTagName('img');
-for (var i = 0; i< elems.length; i++) {
-	elems[i].style.display = 'none';
+var elems = document.getElementsByTagName('img')
+for (var el of elems) {
+	el.style.display = 'none'
 }
 ```
 
 jQuery:
 
 ```
-$('img').hide();
+$('img').hide()
 ```
-``````	
 
 shorter, cross-browser
 
@@ -143,22 +146,21 @@ shorter, cross-browser
 No library:
 
 ```
-var p = document.createElement('p');
-p.appendChild(document.createTextNode('Welcome!'));
-p.style.cssFloat = 'left';
-p.style.backgroundColor = 'red';
-p.className = 'special';
-document.querySelector('div.header').appendChild(p);
+var p = document.createElement('p')
+p.appendChild(document.createTextNode('Welcome!'))
+p.style.cssFloat = 'left'
+p.style.backgroundColor = 'red'
+p.className = 'special'
+document.querySelector('div.header').appendChild(p)
 ```
-``````				
 
 jQuery:
 
 ```
-var newP = $('Welcome!');
-newP.css({'float': 'left', background-color': 'red'});
-newP.addClass('special');
-$('div.header').append(newP);
+var newP = $('Welcome!')
+newP.css({'float': 'left', background-color': 'red'})
+newP.addClass('special')
+$('div.header').append(newP)
 ```
 					
 
@@ -168,17 +170,19 @@ $('div.header').append(newP);
 
 ### The Basics
 
+Given this markup:
+
 ```
 <p>Welcome to jQuery!</p>
 ```
 
-![](images/arrow.png)
+Adding a class to the p is as simple as:
 
 ```
-$('p').addClass('special');
+$('p').addClass('special')
 ```
 
-![](images/arrow.png)
+The above yields:
 
 ```
 <p class="special">Welcome to jQuery!</p>
@@ -188,47 +192,46 @@ shorter, cross-browser
 
 ---
 
-## jQuery Recipe:
+## jQuery Recipe
 
 ### Select, Manipulate, Admire
 
-Step 1: Select element
+Step 1: Select element(s)
 
-						```$('p')
+```
+$('p')
 ```
 					
-
 Step 2: Use a jQuery method to manipulate
 
-						```$('p').addClass('special');
 ```
-					
+$('p').addClass('special')
+```
 
 Step 3: Admire your results!
 
 shorter, cross-browser
 
-									```$('p').addClass('special');
+---
+
 ```
+$('p').addClass('special')
+```
+
+`$` is the global jQuery object. Can also use “jQuery”.
 								
+```
+$('p')
+```
 
-```
-$
-```
-
-```
-('p')
-```
+Finds DOM element(s) matching the given selector (in this case, all pragraphs). Returns a “jQuery collection.”
 
 ```
 addClass('special')
 ```
 
-The global jQuery function. Can also be “jQuery”.
+Built-in jQuery method that adds the specified class to all elements in the collection.  
 
-Finds DOM element(s) according to what’s in the quotes. Returns a “jQuery collection.”
-
-Built-in jQuery method that adds the specified class to the collection.  
 [Read the docs here.](http://api.jquery.com/addClass/)
 
 ---
@@ -239,9 +242,6 @@ Built-in jQuery method that adds the specified class to the collection.
 
 All CSS selectors are valid, plus more. [Read the docs.](http://api.jquery.com/category/selectors/)
 
-With this HTML:
-
-We find it this way:
 
 ```
 <p>Welcome!</p>
@@ -281,7 +281,7 @@ shorter, cross-browser
 
 ---
 
-## [Exercise Time!](/_deprecated/jquery/exercises/domaccess)
+## [Let's Develop It!](jquery/exercises/domaccess)
 
 ---
 
@@ -292,19 +292,19 @@ shorter, cross-browser
 If we start with this HTML...
 
 ```
-<a id="yahoo" href="http://www.yahoo.com" style="font-size:20px;">Yahoo!</a>
+<a id="yahoo" href="http://www.yahoo.com" style="font-size:20px">Yahoo!</a>
 ```
 
 We can find it...
 
 ```
-$('a#yahoo');
+$('a#yahoo')
 ```
 
 We can store it...
 
 ```
-var myLink = $('a#yahoo');
+var myLink = $('a#yahoo')
 ```
 
 ---
@@ -316,7 +316,7 @@ var myLink = $('a#yahoo');
 ...And we can find out lots of things about it:
 
 ```
-myLink.html();
+myLink.html()
 ```
 
 →
@@ -326,7 +326,7 @@ myLink.html();
 ```
 
 ```
-myLink.attr('href');
+myLink.attr('href')
 ```
 
 →
@@ -336,7 +336,7 @@ myLink.attr('href');
 ```
 
 ```
-myLink.css('font-size');
+myLink.css('font-size')
 ```
 
 →
@@ -362,9 +362,9 @@ If we start with this HTML:
 We can use this jQuery:
 
 ```
-$('a').html('Yahoo!');
-$('a').attr('href', 'http://www.yahoo.com');
-$('a').css({'color': 'purple'});
+$('a').html('Yahoo!')
+$('a').attr('href', 'http://www.yahoo.com')
+$('a').css({'color': 'purple'})
 ```
 
 And we'll get this:
@@ -390,13 +390,13 @@ var p = $('<p>')
 Step 2: Use a method to manipulate (optional)
 
 ```
-p.addClass('special');
+p.addClass('special')
 ```
 
 Step 3: Inject into your HTML
 
 ```
-$('body').append(p);
+$('body').append(p)
 ```
 
 shorter, cross-browser
@@ -409,12 +409,8 @@ shorter, cross-browser
 
 Pass in any HTML string and jQuery will create it and return it as a jQuery object.
 
-With this jQuery...
-
-We create this HTML:
-
 ```
-$('<p>');
+$('<p>')
 ```
 
 →
@@ -424,7 +420,7 @@ $('<p>');
 ```
 
 ```
-$('<p>Welcome!</p>');
+$('<p>Welcome!</p>')
 ```
 
 →
@@ -433,20 +429,10 @@ $('<p>Welcome!</p>');
 <p>Welcome!</p>
 ```
 
-```
-$('<p class="intro">Welcome!</p>');
-```
-
-→
-
-```
-<p class="intro">Welcome!</p>
-```
-
 Just like with the DOM API, we can store a reference to our new element in memory...
 
 ```
-var myParagraph = $('<p class="intro">Welcome!</p>');
+var myParagraph = $('<p class="intro">Welcome!</p>')
 ```
 
 ---
@@ -458,11 +444,11 @@ var myParagraph = $('<p class="intro">Welcome!</p>');
 Now that we've stored a reference, we can make further revisions to our element.
 
 ```
-var myParagraph = $('<p class="intro">Welcome!</p>');
+var myParagraph = $('<p class="intro">Welcome!</p>')
 ```
 
 ```
-myParagraph.css('font-size','4em');
+myParagraph.css('font-size','4em')
 ```
 
 ---
@@ -474,11 +460,11 @@ myParagraph.css('font-size','4em');
 Now, we can take our stored reference to ```myParagraph``` and inject it somewhere!
 
 ```
-$('body').append(myParagraph);
+$('body').append(myParagraph)
 ```
 
 ```
-$('body').prepend(myParagraph);
+$('body').prepend(myParagraph)
 ```
 
 ---
@@ -486,25 +472,24 @@ $('body').prepend(myParagraph);
 ## Regular DOM nodes to jQuery objects
 
 ```
-var paragraphs = $('p'); // an array
+var paragraphs = $('p') // an array
 ```
 
 ```
-var myParagraph = paragraphs[0]; // a regular DOM node
+var myParagraph = paragraphs[0] // a regular DOM node
 ```
 
 ```
-var $myParagraph = $(paragraphs[0]); // a jQuery Object
+var $myParagraph = $(paragraphs[0]) // a jQuery Object
 ```
 
 We can also loop through our array...
 
 ```
-for(var i = 0; i < paragraphs.length; i++) {
-  var element = paragraphs[i];
-  var paragraph = $(element);
-  paragraph.html(paragraph.html() + ' wowee!!!!');
-};
+for (var para of paragraphs) {
+  var p = $(para)
+  p.html(p.html() + ' wowee!!!!')
+}
 ```
 
 shorter, cross-browser
@@ -517,7 +502,7 @@ shorter, cross-browser
 
 [Download](http://jquery.com/download/) or link from an official CDN.
 
-Then include using a <script> tag on the page.
+Then include using a `<script>` tag on the page.
 
 ```
 <html>
@@ -535,4 +520,4 @@ shorter, cross-browser
 
 ---
 
-## [Exercise Time!](/_deprecated/jquery/exercises/videoplayer_jquery)
+## [Let's Develop It!](jquery/exercises/videoplayer_jquery)
