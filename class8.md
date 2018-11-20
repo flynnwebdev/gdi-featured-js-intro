@@ -1,0 +1,420 @@
+---
+theme : "moon"
+highlightTheme : "agate"
+---
+
+<style>
+    .reveal .slides {
+      zoom: 1 !important;
+      height: auto !important;
+    }
+    .reveal .slides section {
+      top: 50% !important;
+      transform: translateY(-50%) !important;
+      zoom: 0.75 !important;
+    }
+    .reveal pre {
+        width: 100% !important;
+    }
+    .reveal section pre code {
+        overflow: hidden !important;
+        max-height: none !important;
+        white-space: pre-wrap !important;
+    }
+    .reveal img {
+        border: none !important;
+        background: none !important;
+    }
+</style>
+
+
+# Promises
+
+---
+
+## JS Callbacks
+
+So far, we've used callbacks to handle cases where we want to do something when a task finishes, but we don't want other code to wait. 
+
+```
+var img1 = document.querySelector('.img-1');
+
+img1.addEventListener('load', function() {
+  // woo yey image loaded
+});
+
+img1.addEventListener('error', function() {
+  // argh everything's broken
+});
+```
+
+However, one disadvantage of this pattern is that it's possible that one of the events has already happened _before_ we added the event listener.
+---
+
+## JS Callbacks
+
+We can get around the problem using a property of images called _complete_
+
+```
+var img1 = document.querySelector('.img-1');
+
+function loaded() {
+  // woo yey image loaded
+}
+
+if (img1.complete) { // If already loaded, call the callback immediately
+  loaded();
+}
+else {
+  img1.addEventListener('load', loaded);
+}
+
+img1.addEventListener('error', function() {
+  // argh everything's broken
+});
+```
+
+This doesn't catch images that error'd before we got a chance to listen for them; unfortunately the DOM doesn't give us a way to do that.
+
+Also, this is loading one image, things get even more complex if we want to know when a set of images have loaded.
+
+---
+
+## Nested Callbacks
+
+What if we want to perform a chain of async actions, ensuring a specific order? One way is to nest callbacks, like this:
+
+```js
+doSomething(function(result) {
+  doSomethingElse(result, function(newResult) {
+    doThirdThing(newResult, function(finalResult) {
+      console.log('Got the final result: ' + finalResult);
+    }, failureCallback);
+  }, failureCallback);
+}, failureCallback);
+```
+
+However, even this simple example is not at all DRY, and will quickly become unmaintainable.
+
+Taken to the extreme, this type of nesting gives rise to ...
+
+---
+
+## Callback Hell
+
+![](dist/img/callback_hell.png)
+
+So how do we fix this?
+
+---
+
+## Promises
+
+Events are great for things that can happen multiple times on the same object — keyup, touchstart, click, etc. With those events you don't really care about what happened before you attached the listener.
+
+But when it comes to async success/failure, ideally you want something like this:
+
+```js
+img1.callThisIfLoadedOrWhenLoaded(function() {
+  // loaded
+}).orIfFailedCallThis(function() {
+  // failed
+});
+
+// and…
+whenAllTheseHaveLoaded([img1, img2]).callThis(function() {
+  // all loaded
+}).orIfSomeFailedCallThis(function() {
+  // one or more failed
+});
+```
+
+---
+
+## Promises
+
+This is what promises do, but with better naming. If HTML image elements had a "ready" method that returned a promise, we could do this:
+
+```
+img1.ready().then(function() {
+  // loaded
+}, function() {
+  // failed
+});
+
+// and…
+Promise.all([img1.ready(), img2.ready()]).then(function() {
+  // all loaded
+}, function() {
+  // one or more failed
+});
+```
+
+The basic idea is that we attach our callbacks to a Promise _object_ that is returned by an async function, rather than _passing_ the callback as a parameter.
+
+---
+
+## Promise Object
+
+```
+img1.ready().then(function() {
+  // loaded
+}, function() {
+  // failed
+});
+
+// and…
+Promise.all([img1.ready(), img2.ready()]).then(function() {
+  // all loaded
+}, function() {
+  // one or more failed
+});
+```
+
+* The ready() function returns a Promise object
+* The then() function attaches two callbacks to the promise - one for success, one for failure
+* Promise.all will only invoke the then() callback when all promises in the array resolve. The order they resolve in is irrelevant
+
+---
+
+## Promises
+
+At their most basic, promises are a bit like event listeners except:
+
+> * A promise can only succeed or fail once. It cannot succeed or fail twice, neither can it switch from success to failure or vice versa.
+* If a promise has succeeded or failed and you later add a success/failure callback, the correct callback will be called, even though the event took place earlier.
+
+This is extremely useful for async success/failure, because you're less interested in the exact time something became available, and more interested in reacting to the outcome.
+
+---
+
+## Example
+
+Let's have a look at a real-world use of promises by getting the BatteryManager object from the browser.
+
+```js
+let batteryIsCharging = false;
+
+navigator.getBattery().then(function(battery) {
+  batteryIsCharging = battery.charging;
+
+  battery.addEventListener('chargingchange', function() {
+    batteryIsCharging = battery.charging;
+    console.log(`Your device is now ${ batteryIsCharging ? 'charging' : 'discharging!' }`)
+  });
+});
+```
+
+---
+
+## Promises
+
+A promise can be in one of 3 states:
+
+* **fulfilled** - The action relating to the promise succeeded
+* **rejected** - The action relating to the promise failed
+* **pending** - The action is still in progress
+
+---
+
+## Events
+
+Preventing Default Events using jQuery
+
+```js
+// default event for clicking on link is to go to new page
+$('a').on('click', function (event) {
+  event.preventDefault()
+  console.log('Not going there!')
+})
+```
+
+```js
+// default event is to submit form and reload page
+$('form').on('submit', function (event) {
+  event.preventDefault()
+  console.log('Not submitting, time to validate!')
+})
+```
+
+---
+
+## Effects & Animation
+  
+```
+// on page load (we'll see how to do this later)
+$('.kitty-image').show(3000) // show after 3 seconds
+
+$('.kitty-image').fadeIn(3000) // fade in over 3 seconds
+
+// with an event handler, as a callback
+$('button').click(function() {
+  $('.kitty-image').show() // show immediately
+})
+
+// change text color of any button to red when hovered
+$('button').mouseover(function(){
+  $(this).css('color', 'red')
+})
+```
+
+---
+
+## Let's Develop It!
+
+[Events and Animation Exercise](exercises/exercise_events.html)
+
+Work in pairs, and don't forget to use the [jQuery documentation](https://api.jquery.com/)
+
+---
+
+## jQuery Plugins
+
+  
+"If you want to create an animation, effect, or UI component, chances are pretty good that someone has done the work for you already."
+
+### [plugins.jquery.com](http://plugins.jquery.com)
+
+  
+  
+
+[Which plugin should you pick?](http://blog.pamelafox.org/2013/07/which-javascript-library-should-i-pick.html)
+
+---
+
+## jQuery Plugin Usage
+
+*   Download the plugin and associated files from the site or github repo.
+*   Copy them into your project folder.
+*   In the HTML, reference any associated CSS files.
+
+```
+<link rel="type/stylesheet" type="text/css" href="tablesorter.css">
+```
+
+*   In the HTML, add a `<script>` tag for the jQuery plugin itself.
+
+```
+<script src="lib/tablesorter.js"><script>
+```
+
+*   In the JavaScript, call the jQuery plugin on your DOM.
+
+```
+$('table').tableSorter()
+```
+
+---
+
+## Let's Develop It!
+
+[Slick Slider](http://kenwheeler.github.io/slick/) is a widely used jQuery plugin that converts a simple HTML list of items into a fully-featured slideshow/carousel.
+
+Use Slick to convert your list of videos from the previous exercise into a slider.
+
+Work in pairs. You'll need to spend some time reading the linked site to figure out how to install and use the plugin.
+
+---
+
+## jQuery Patterns
+
+
+**Pattern:** name variables that contain a jQuery object with $
+
+```
+let $mylet = $('#myNode')
+```
+
+---
+
+## Chaining
+
+**Pattern:** chain calls on the same entity.
+
+```
+banner.css('color', 'red')
+banner.html('Welcome!')
+banner.show()
+```
+
+Is the same as:
+
+```
+banner.css('color', 'red').html('Welcome!').show()
+```
+
+Is the same as:
+
+```
+banner.css('color', 'red')
+       .html('Welcome!')
+       .show()
+```
+
+---
+
+## DOM Readiness
+
+**Broken code:** DOM manipulation and event binding in the `<head>`
+
+```
+<head>
+  <script>
+    $('body').append( myNode )
+  </script>
+</head>
+
+```
+
+The code breaks because it will execute before the body node actually exists.
+
+---
+
+## DOM Readiness
+
+**Pattern:** Wait for the rest of the DOM to be ready before executing
+
+```
+<head>
+  <script>
+    $(document).ready(function() {
+      // do something when the DOM is fully loaded
+    })
+  </script>
+</head>
+
+```
+
+This pattern can also be used in an external .js file.
+
+---
+
+## jQuery
+
+#### ...is great.  
+  
+But do not become dependent on it!
+
+---
+
+## Resources
+
+[W3Schools jQuery Tutorial](https://www.w3schools.com/jquery/default.asp)
+
+[Official jQuery reference](https://api.jquery.com/)
+
+[Official Learn jQuery](https://learn.jquery.com/)
+
+
+---
+
+# Questions?
+
+---
+
+## AFTERNOON CHALLENGE
+
+### [Canvas Unit: Callbacks](https://coderacademy.instructure.com/courses/144/pages/unit-jquery)
+
+### [Canvas Unit: jQuery](https://coderacademy.instructure.com/courses/144/pages/unit-jquery)
+
