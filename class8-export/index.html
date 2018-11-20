@@ -1,8 +1,40 @@
----
-theme : "moon"
-highlightTheme : "agate"
----
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>RevealJS : c:\Users\flynn\projects\gdi-featured-js-intro\class8.md</title>
+        <link rel="stylesheet" href="css/reveal.css">
+        <link rel="stylesheet" href="css/theme/moon.css" id="theme">
+        
+       
+        <!-- For syntax highlighting -->
+        <link rel="stylesheet" href="lib/css/agate.css">
 
+        
+
+        <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+        <script>
+          document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+        </script>
+
+        <style type="text/css">
+            @page {    
+              margin: 0;
+              size: auto; 
+            }
+        </style>
+
+        <script>
+         if(window.location.search.match( /print-pdf-now/gi )) {
+           window.print();
+         }
+      </script>
+
+    </head>
+    <body>
+
+        <div class="reveal">
+            <div class="slides"><section  data-markdown><script type="text/template">
 <style>
     .reveal .slides {
       zoom: 1 !important;
@@ -29,8 +61,7 @@ highlightTheme : "agate"
 
 
 # Promises
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 ## JS Callbacks
 
@@ -48,8 +79,7 @@ img1.addEventListener('error', function() {
 });
 ```
 
-However, one disadvantage of this pattern is that it's possible that one of the events has already happened _before_ we added the event listener.
----
+However, one disadvantage of this pattern is that it's possible that one of the events has already happened _before_ we added the event listener.</script></section><section  data-markdown><script type="text/template">
 
 ## JS Callbacks
 
@@ -77,8 +107,7 @@ img1.addEventListener('error', function() {
 This doesn't catch images that error'd before we got a chance to listen for them; unfortunately the DOM doesn't give us a way to do that.
 
 Also, this is loading one image, things get even more complex if we want to know when a set of images have loaded.
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 ## Nested Callbacks
 
@@ -97,16 +126,14 @@ doSomething(function(result) {
 However, even this simple example is not at all DRY, and will quickly become unmaintainable.
 
 Taken to the extreme, this type of nesting gives rise to ...
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 ## Callback Hell
 
 ![](dist/img/callback_hell.png)
 
 So how do we fix this?
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 ## Promises
 
@@ -128,8 +155,7 @@ whenAllTheseHaveLoaded([img1, img2]).callThis(function() {
   // one or more failed
 });
 ```
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 ## Promises
 
@@ -151,8 +177,7 @@ Promise.all([img1.ready(), img2.ready()]).then(function() {
 ```
 
 The basic idea is that we attach our callbacks to a Promise _object_ that is returned by an async function, rather than _passing_ the callback as a parameter.
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 ## Promise Object
 
@@ -174,8 +199,7 @@ Promise.all([img1.ready(), img2.ready()]).then(function() {
 * The ready() function returns a Promise object
 * The then() function attaches two callbacks to the promise - one for success, one for failure
 * Promise.all will only invoke the then() callback when all promises in the array resolve. The order they resolve in is irrelevant
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 ## Promises
 
@@ -185,8 +209,7 @@ At their most basic, promises are a bit like event listeners except:
 * If a promise has succeeded or failed and you later add a success/failure callback, the correct callback will be called, even though the event took place earlier.
 
 This is extremely useful for async success/failure, because you're less interested in the exact time something became available, and more interested in reacting to the outcome.
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 ## Example
 
@@ -204,8 +227,7 @@ navigator.getBattery().then(function(battery) {
   });
 });
 ```
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 ## Promises
 
@@ -214,8 +236,7 @@ A promise can be in one of 3 states:
 * **fulfilled** - The action relating to the promise succeeded
 * **rejected** - The action relating to the promise failed
 * **pending** - The action is still in progress
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 ## Events
 
@@ -236,8 +257,7 @@ $('form').on('submit', function (event) {
   console.log('Not submitting, time to validate!')
 })
 ```
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 ## Effects & Animation
   
@@ -257,16 +277,14 @@ $('button').mouseover(function(){
   $(this).css('color', 'red')
 })
 ```
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 ## Let's Develop It!
 
 [Events and Animation Exercise](exercises/exercise_events.html)
 
 Work in pairs, and don't forget to use the [jQuery documentation](https://api.jquery.com/)
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 ## jQuery Plugins
 
@@ -279,8 +297,7 @@ Work in pairs, and don't forget to use the [jQuery documentation](https://api.jq
   
 
 [Which plugin should you pick?](http://blog.pamelafox.org/2013/07/which-javascript-library-should-i-pick.html)
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 ## jQuery Plugin Usage
 
@@ -303,8 +320,7 @@ Work in pairs, and don't forget to use the [jQuery documentation](https://api.jq
 ```
 $('table').tableSorter()
 ```
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 ## Let's Develop It!
 
@@ -313,8 +329,7 @@ $('table').tableSorter()
 Use Slick to convert your list of videos from the previous exercise into a slider.
 
 Work in pairs. You'll need to spend some time reading the linked site to figure out how to install and use the plugin.
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 ## jQuery Patterns
 
@@ -324,8 +339,7 @@ Work in pairs. You'll need to spend some time reading the linked site to figure 
 ```
 let $mylet = $('#myNode')
 ```
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 ## Chaining
 
@@ -350,8 +364,7 @@ banner.css('color', 'red')
        .html('Welcome!')
        .show()
 ```
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 ## DOM Readiness
 
@@ -361,14 +374,13 @@ banner.css('color', 'red')
 <head>
   <script>
     $('body').append( myNode )
-  </script>
+  __SCRIPT_END__
 </head>
 
 ```
 
 The code breaks because it will execute before the body node actually exists.
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 ## DOM Readiness
 
@@ -380,22 +392,20 @@ The code breaks because it will execute before the body node actually exists.
     $(document).ready(function() {
       // do something when the DOM is fully loaded
     })
-  </script>
+  __SCRIPT_END__
 </head>
 
 ```
 
 This pattern can also be used in an external .js file.
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 ## jQuery
 
 #### ...is great.  
   
 But do not become dependent on it!
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 ## Resources
 
@@ -405,12 +415,10 @@ But do not become dependent on it!
 
 [Official Learn jQuery](https://learn.jquery.com/)
 
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 # Questions?
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 ## AFTERNOON CHALLENGE
 
@@ -418,3 +426,87 @@ But do not become dependent on it!
 
 ### [Canvas Unit: jQuery](https://coderacademy.instructure.com/courses/144/pages/unit-jquery)
 
+</script></section></div>
+        </div>
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.js"></script>
+
+        <script>
+            function extend() {
+              var target = {};
+              for (var i = 0; i < arguments.length; i++) {
+                var source = arguments[i];
+                for (var key in source) {
+                  if (source.hasOwnProperty(key)) {
+                    target[key] = source[key];
+                  }
+                }
+              }
+              return target;
+            }
+            // Optional libraries used to extend on reveal.js
+            var deps = [
+              { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+              { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector('[data-markdown]'); } },
+              { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector('[data-markdown]'); } },
+              { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+              { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+              { src: 'plugin/math/math.js', async: true }
+            ];
+            // default options to init reveal.js
+            var defaultOptions = {
+              controls: true,
+              progress: true,
+              history: true,
+              center: true,
+              transition: 'default',
+              dependencies: deps
+            };
+            // options from URL query string
+            var queryOptions = Reveal.getQueryHash() || {};
+            var options = {
+  "notesSeparator": "note:",
+  "separator": "^[\r\n?|\n]---[\r\n?|\n]$",
+  "verticalSeparator": "^[\r\n?|\n]--[\r\n?|\n]$",
+  "theme": "moon",
+  "highlightTheme": "agate",
+  "controls": true,
+  "progress": true,
+  "slideNumber": false,
+  "history": true,
+  "keyboard": true,
+  "overview": true,
+  "center": true,
+  "touch": true,
+  "loop": false,
+  "rtl": false,
+  "shuffle": false,
+  "fragments": true,
+  "embedded": false,
+  "help": true,
+  "showNotes": false,
+  "autoSlide": 0,
+  "autoSlideStoppable": true,
+  "mouseWheel": false,
+  "hideAddressBar": true,
+  "previewLinks": false,
+  "transition": "default",
+  "transitionSpeed": "default",
+  "backgroundTransition": "default",
+  "viewDistance": 3,
+  "parallaxBackgroundImage": "",
+  "parallaxBackgroundSize": "",
+  "parallaxBackgroundHorizontal": null,
+  "parallaxBackgroundVertical": null,
+  "slideExplorerEnabled": true,
+  "browserPath": null,
+  "attributes": ""
+};
+            options = extend(defaultOptions, options, queryOptions);
+            Reveal.initialize(options);
+
+        </script>
+        
+    </body>
+</html>
