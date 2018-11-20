@@ -12,3 +12,5 @@
 
 [Part 7 - Callbacks and More jQuery](https://flynnwebdev.github.io/javascript-slides/class7-export/#/)
 
+[Part 8 - Promises](https://flynnwebdev.github.io/javascript-slides/class8-export/#/)
+

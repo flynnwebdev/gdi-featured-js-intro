@@ -1,5 +1,5 @@
 ---
-theme : "moon"
+theme : "sky"
 highlightTheme : "agate"
 ---
 
@@ -36,16 +36,16 @@ highlightTheme : "agate"
 
 So far, we've used callbacks to handle cases where we want to do something when a task finishes, but we don't want other code to wait. 
 
-```
-var img1 = document.querySelector('.img-1');
+```js
+let img1 = document.querySelector('.img-1')
 
 img1.addEventListener('load', function() {
   // woo yey image loaded
-});
+})
 
 img1.addEventListener('error', function() {
   // argh everything's broken
-});
+})
 ```
 
 However, one disadvantage of this pattern is that it's possible that one of the events has already happened _before_ we added the event listener.
@@ -55,26 +55,26 @@ However, one disadvantage of this pattern is that it's possible that one of the 
 
 We can get around the problem using a property of images called _complete_
 
-```
-var img1 = document.querySelector('.img-1');
+```js
+let img1 = document.querySelector('.img-1')
 
 function loaded() {
   // woo yey image loaded
 }
 
 if (img1.complete) { // If already loaded, call the callback immediately
-  loaded();
+  loaded()
 }
 else {
-  img1.addEventListener('load', loaded);
+  img1.addEventListener('load', loaded)
 }
 
 img1.addEventListener('error', function() {
   // argh everything's broken
-});
+})
 ```
 
-This doesn't catch images that error'd before we got a chance to listen for them; unfortunately the DOM doesn't give us a way to do that.
+This doesn't catch images that error'd before we got a chance to listen for them unfortunately the DOM doesn't give us a way to do that.
 
 Also, this is loading one image, things get even more complex if we want to know when a set of images have loaded.
 
@@ -88,10 +88,10 @@ What if we want to perform a chain of async actions, ensuring a specific order? 
 doSomething(function(result) {
   doSomethingElse(result, function(newResult) {
     doThirdThing(newResult, function(finalResult) {
-      console.log('Got the final result: ' + finalResult);
-    }, failureCallback);
-  }, failureCallback);
-}, failureCallback);
+      console.log('Got the final result: ' + finalResult)
+    }, failureCallback)
+  }, failureCallback)
+}, failureCallback)
 ```
 
 However, even this simple example is not at all DRY, and will quickly become unmaintainable.
@@ -119,14 +119,14 @@ img1.callThisIfLoadedOrWhenLoaded(function() {
   // loaded
 }).orIfFailedCallThis(function() {
   // failed
-});
+})
 
 // and…
 whenAllTheseHaveLoaded([img1, img2]).callThis(function() {
   // all loaded
 }).orIfSomeFailedCallThis(function() {
   // one or more failed
-});
+})
 ```
 
 ---
@@ -135,19 +135,19 @@ whenAllTheseHaveLoaded([img1, img2]).callThis(function() {
 
 This is what promises do, but with better naming. If HTML image elements had a "ready" method that returned a promise, we could do this:
 
-```
+```js
 img1.ready().then(function() {
   // loaded
 }, function() {
   // failed
-});
+})
 
 // and…
 Promise.all([img1.ready(), img2.ready()]).then(function() {
   // all loaded
 }, function() {
   // one or more failed
-});
+})
 ```
 
 The basic idea is that we attach our callbacks to a Promise _object_ that is returned by an async function, rather than _passing_ the callback as a parameter.
@@ -156,19 +156,19 @@ The basic idea is that we attach our callbacks to a Promise _object_ that is ret
 
 ## Promise Object
 
-```
+```js
 img1.ready().then(function() {
   // loaded
 }, function() {
   // failed
-});
+})
 
 // and…
 Promise.all([img1.ready(), img2.ready()]).then(function() {
   // all loaded
 }, function() {
   // one or more failed
-});
+})
 ```
 
 * The ready() function returns a Promise object
@@ -188,25 +188,6 @@ This is extremely useful for async success/failure, because you're less interest
 
 ---
 
-## Example
-
-Let's have a look at a real-world use of promises by getting the BatteryManager object from the browser.
-
-```js
-let batteryIsCharging = false;
-
-navigator.getBattery().then(function(battery) {
-  batteryIsCharging = battery.charging;
-
-  battery.addEventListener('chargingchange', function() {
-    batteryIsCharging = battery.charging;
-    console.log(`Your device is now ${ batteryIsCharging ? 'charging' : 'discharging!' }`)
-  });
-});
-```
-
----
-
 ## Promises
 
 A promise can be in one of 3 states:
@@ -217,193 +198,116 @@ A promise can be in one of 3 states:
 
 ---
 
-## Events
+## Example
 
-Preventing Default Events using jQuery
-
-```js
-// default event for clicking on link is to go to new page
-$('a').on('click', function (event) {
-  event.preventDefault()
-  console.log('Not going there!')
-})
-```
+Let's have a look at a real-world use of promises by getting some random user data from a public API
 
 ```js
-// default event is to submit form and reload page
-$('form').on('submit', function (event) {
-  event.preventDefault()
-  console.log('Not submitting, time to validate!')
-})
+fetch('https://randomuser.me/api')
+    .then(
+        (res) => res.json(),
+        () => console.error('Unable to fetch!')
+    )
+    .then((json) => console.log(json))
 ```
 
----
+fetch() returns a Promise. If it resolves successfully, then the first callback in the then() is executed, which parses the result as JSON.
 
-## Effects & Animation
-  
-```
-// on page load (we'll see how to do this later)
-$('.kitty-image').show(3000) // show after 3 seconds
+The json() method itself returns a promise, which we process in the chained then().
 
-$('.kitty-image').fadeIn(3000) // fade in over 3 seconds
-
-// with an event handler, as a callback
-$('button').click(function() {
-  $('.kitty-image').show() // show immediately
-})
-
-// change text color of any button to red when hovered
-$('button').mouseover(function(){
-  $(this).css('color', 'red')
-})
-```
+If an error occurs in fetch() then the second callback in the then() is executed, and the chained then() is NOT executed.
 
 ---
 
 ## Let's Develop It!
 
-[Events and Animation Exercise](exercises/exercise_events.html)
+Investigate the navigator.mediaDevices API, which is built in to most browsers.
 
-Work in pairs, and don't forget to use the [jQuery documentation](https://api.jquery.com/)
-
----
-
-## jQuery Plugins
-
-  
-"If you want to create an animation, effect, or UI component, chances are pretty good that someone has done the work for you already."
-
-### [plugins.jquery.com](http://plugins.jquery.com)
-
-  
-  
-
-[Which plugin should you pick?](http://blog.pamelafox.org/2013/07/which-javascript-library-should-i-pick.html)
+Write a basic HTML page and add script that retrieves and displays a list of media devices on your laptop, using methods found in navigator.mediaDevices.
 
 ---
 
-## jQuery Plugin Usage
+## Creating a promise
 
-*   Download the plugin and associated files from the site or github repo.
-*   Copy them into your project folder.
-*   In the HTML, reference any associated CSS files.
+In addition to using existing promises, we can create our own.
 
-```
-<link rel="type/stylesheet" type="text/css" href="tablesorter.css">
+```js
+let myPromise = new Promise(function(resolve, reject) {
+  // do a thing, possibly async, then…
+
+  if (/* everything turned out fine */) {
+    resolve("Stuff worked!")
+  }
+  else {
+    reject(Error("It broke"))
+  }
+})
 ```
 
-*   In the HTML, add a `<script>` tag for the jQuery plugin itself.
+The promise constructor takes one argument: a callback with two parameters, resolve and reject.
 
-```
-<script src="lib/tablesorter.js"><script>
-```
+Basic pattern is to do something within the callback, perhaps async, then call resolve if everything worked, otherwise call reject.
 
-*   In the JavaScript, call the jQuery plugin on your DOM.
-
-```
-$('table').tableSorter()
-```
+Like throw in plain old JavaScript, it's customary, but not required, to reject with an Error object. The benefit of Error objects is they capture a stack trace, making debugging tools more helpful.
 
 ---
 
-## Let's Develop It!
+## Using our promise
 
-[Slick Slider](http://kenwheeler.github.io/slick/) is a widely used jQuery plugin that converts a simple HTML list of items into a fully-featured slideshow/carousel.
+Now we've built the promise, we can use it like this:
 
-Use Slick to convert your list of videos from the previous exercise into a slider.
+```js
+promise.then(function(result) {
+  console.log(result) // "Stuff worked!"
+}, function(err) {
+  console.log(err) // Error: "It broke"
+})
+```
 
-Work in pairs. You'll need to spend some time reading the linked site to figure out how to install and use the plugin.
+then() takes two arguments, a callback for a success case, and another for the failure case. Both are optional, so you can add a callback for the success or failure case only.
+
+In this case, we're just displaying the result on the console, but in a real app, we could do anything we like with the response.
 
 ---
 
-## jQuery Patterns
+## Catch block
 
+If we have a chain of then(), we can create a function that catches any and all errors that occur anywhere in the chain.
 
-**Pattern:** name variables that contain a jQuery object with $
-
+```js
+fetch('https://randomuser.me/api')
+    .then(
+      (res) => res.json()
+    )
+    .then(
+      (json) => console.log(json)
+    )
+    .catch(
+      (err) => console.error('Unable to fetch!', Error(err))
+    )
 ```
-let $mylet = $('#myNode')
-```
+
+Note that we don't need the second callback in each then(), because the catch() will trap any errors raised by the fetch()
 
 ---
 
-## Chaining
+## Let's develop it
 
-**Pattern:** chain calls on the same entity.
+Write a function testNum that takes a number as an argument and returns a Promise that tests if the value is less than or greater than the value 10.
 
-```
-banner.css('color', 'red')
-banner.html('Welcome!')
-banner.show()
-```
+The promise should resolve if the value is less than 10, or reject with an error otherwise.
 
-Is the same as:
-
-```
-banner.css('color', 'red').html('Welcome!').show()
-```
-
-Is the same as:
-
-```
-banner.css('color', 'red')
-       .html('Welcome!')
-       .show()
-```
-
----
-
-## DOM Readiness
-
-**Broken code:** DOM manipulation and event binding in the `<head>`
-
-```
-<head>
-  <script>
-    $('body').append( myNode )
-  </script>
-</head>
-
-```
-
-The code breaks because it will execute before the body node actually exists.
-
----
-
-## DOM Readiness
-
-**Pattern:** Wait for the rest of the DOM to be ready before executing
-
-```
-<head>
-  <script>
-    $(document).ready(function() {
-      // do something when the DOM is fully loaded
-    })
-  </script>
-</head>
-
-```
-
-This pattern can also be used in an external .js file.
-
----
-
-## jQuery
-
-#### ...is great.  
-  
-But do not become dependent on it!
+Write two blocks of code to test the promise - one that passes a value less than 10 (to test error handling), and one that passes a value greater than 10.
 
 ---
 
 ## Resources
 
-[W3Schools jQuery Tutorial](https://www.w3schools.com/jquery/default.asp)
+[Google Developers primer on promises](https://developers.google.com/web/fundamentals/primers/promises)
 
-[Official jQuery reference](https://api.jquery.com/)
+[Official promises reference](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 
-[Official Learn jQuery](https://learn.jquery.com/)
+[More comprehensive promises tutorial](http://www.javascriptkit.com/javatutors/javascriptpromises.shtml)
 
 
 ---
@@ -414,7 +318,5 @@ But do not become dependent on it!
 
 ## AFTERNOON CHALLENGE
 
-### [Canvas Unit: Callbacks](https://coderacademy.instructure.com/courses/144/pages/unit-jquery)
-
-### [Canvas Unit: jQuery](https://coderacademy.instructure.com/courses/144/pages/unit-jquery)
+### [Canvas Unit: Promises](https://coderacademy.instructure.com/courses/144/pages/unit-promises)
 
