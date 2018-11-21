@@ -14,3 +14,4 @@
 
 [Part 8 - Promises](https://flynnwebdev.github.io/javascript-slides/class8-export/#/)
 
+[Part 9 - AJAX](https://flynnwebdev.github.io/javascript-slides/class9-export/#/)
