@@ -1,8 +1,40 @@
----
-theme : "sky"
-highlightTheme : "agate"
----
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>RevealJS : c:\Users\flynn\projects\gdi-featured-js-intro\class10.md</title>
+        <link rel="stylesheet" href="css/reveal.css">
+        <link rel="stylesheet" href="css/theme/sky.css" id="theme">
+        
+       
+        <!-- For syntax highlighting -->
+        <link rel="stylesheet" href="lib/css/agate.css">
 
+        
+
+        <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+        <script>
+          document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+        </script>
+
+        <style type="text/css">
+            @page {    
+              margin: 0;
+              size: auto; 
+            }
+        </style>
+
+        <script>
+         if(window.location.search.match( /print-pdf-now/gi )) {
+           window.print();
+         }
+      </script>
+
+    </head>
+    <body>
+
+        <div class="reveal">
+            <div class="slides"><section  data-markdown><script type="text/template">
 <style>
     .reveal .slides {
       zoom: 1 !important;
@@ -28,16 +60,14 @@ highlightTheme : "agate"
 </style>
 
 # Web Storage
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 ## Server-side storage
 
 Most major modern web sites are dynamic — they store data on the server using some kind of database (server-side storage), then run server-side code to retrieve needed data, insert it into static page templates, and serve the resulting HTML to the client to be displayed by the user's browser.
 
 This is the pattern used by Rails apps.
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 ## Client-side storage
 
@@ -52,8 +82,7 @@ Typical uses for client-side storage include:
 * Saving data and assets locally so a site will be quicker (and potentially less expensive) to download, or be usable without a network connection.
 
 * Saving web application generated documents locally for use offline
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 # Cookies
 
@@ -68,8 +97,7 @@ console.log(document.cookie)  // displays all the cookies for this site
 ```
 
 We'll cover cookies briefly, as many sites still use them, but it is strongly recommended to avoid them for any new project.
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 ## Creating a cookie
 
@@ -81,8 +109,7 @@ document.cookie = "favourite_food=pizza"
 ```
 
 Note that the = isn't like a normal assignment - it actually uses a setter method on the cookie object so that the new cookie is added, rather than it replacing the entire cookie string.
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 ## Getting a cookie value
 
@@ -102,8 +129,7 @@ console.log(getCookie('favourite_food'))  // pizza
 ```
 
 Even this is kind of ugly and awkward.
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 ## Deleting a cookie
 
@@ -114,8 +140,7 @@ document.cookie = "favourite_food="
 ```
 
 The cookie isn't actually deleted, just set to the empty string, which is false-y.
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 ## Disadvantages
 
@@ -135,8 +160,7 @@ Apart from being awkward to work with, cookies also have several other disadvant
 
 * Your site must now pop up an opt-in warning about cookies under new EU regulations
     * ...despite the violation of sovereignty inherent in AU citizens being under EU jurisdiction.
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 # localStorage
 
@@ -147,8 +171,7 @@ The localStorage API provides a very simple syntax for storing and retrieving sm
 However, unlike cookies, localStorage is easier to use and more flexible.
 
 The biggest benefit of localStorage is that the data will persist indefinitely, even if the tab/browser/computer is shut down and reopened/restarted at a later date.
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 ## Save data in localStorage
 
@@ -170,8 +193,7 @@ let person = {
 
 localStorage.setItem('person', JSON.stringify(person))
 ```
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 ## Get data from localStorage
 
@@ -187,8 +209,7 @@ Assuming we stored Bill as 'person' as per the previous slide, we can retrieve t
 let person = JSON.parse(localStorage.getItem('person'))
 console.log(person)  // { name: 'Bill', age: 33 }
 ```
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 ## Delete from localStorage
 
@@ -201,8 +222,7 @@ localStorage.getItem('name')  // Chris
 localStorage.removeItem('name')
 localStorage.getItem('name')  // null
 ```
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 ## sessionStorage
 
@@ -211,8 +231,7 @@ sessionStorage works in exactly the same way as localStorage - it has the same m
 The difference with sessionStorage is that the data will only persist for the current browser session. All items related to the current origin will be deleted when the session ends.
 
 A session ends when the browser is shut down or the user manually clears the site's storage.
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 ## Resources
 
@@ -221,15 +240,97 @@ A session ends when the browser is shut down or the user manually clears the sit
 [Cookies reference](https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie)
 
 [Client-side storage reference](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API)
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 # Questions?
-
----
+</script></section><section  data-markdown><script type="text/template">
 
 ## AFTERNOON CHALLENGE
 
 ### [Canvas Unit: Cookies](https://coderacademy.instructure.com/courses/144/pages/unit-cookies)
 
 ### [Canvas Unit: Web Storage](https://coderacademy.instructure.com/courses/144/pages/unit-web-storage)
+</script></section></div>
+        </div>
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.js"></script>
+
+        <script>
+            function extend() {
+              var target = {};
+              for (var i = 0; i < arguments.length; i++) {
+                var source = arguments[i];
+                for (var key in source) {
+                  if (source.hasOwnProperty(key)) {
+                    target[key] = source[key];
+                  }
+                }
+              }
+              return target;
+            }
+            // Optional libraries used to extend on reveal.js
+            var deps = [
+              { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+              { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector('[data-markdown]'); } },
+              { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector('[data-markdown]'); } },
+              { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+              { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+              { src: 'plugin/math/math.js', async: true }
+            ];
+            // default options to init reveal.js
+            var defaultOptions = {
+              controls: true,
+              progress: true,
+              history: true,
+              center: true,
+              transition: 'default',
+              dependencies: deps
+            };
+            // options from URL query string
+            var queryOptions = Reveal.getQueryHash() || {};
+            var options = {
+  "notesSeparator": "note:",
+  "separator": "^[\r\n?|\n]---[\r\n?|\n]$",
+  "verticalSeparator": "^[\r\n?|\n]--[\r\n?|\n]$",
+  "theme": "sky",
+  "highlightTheme": "agate",
+  "controls": true,
+  "progress": true,
+  "slideNumber": false,
+  "history": true,
+  "keyboard": true,
+  "overview": true,
+  "center": true,
+  "touch": true,
+  "loop": false,
+  "rtl": false,
+  "shuffle": false,
+  "fragments": true,
+  "embedded": false,
+  "help": true,
+  "showNotes": false,
+  "autoSlide": 0,
+  "autoSlideStoppable": true,
+  "mouseWheel": false,
+  "hideAddressBar": true,
+  "previewLinks": false,
+  "transition": "default",
+  "transitionSpeed": "default",
+  "backgroundTransition": "default",
+  "viewDistance": 3,
+  "parallaxBackgroundImage": "",
+  "parallaxBackgroundSize": "",
+  "parallaxBackgroundHorizontal": null,
+  "parallaxBackgroundVertical": null,
+  "slideExplorerEnabled": true,
+  "browserPath": null,
+  "attributes": ""
+};
+            options = extend(defaultOptions, options, queryOptions);
+            Reveal.initialize(options);
+
+        </script>
+        
+    </body>
+</html>
