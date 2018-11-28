@@ -265,6 +265,8 @@ Keep in mind that you'll have access to the Node API in this console, NOT the DO
 
 [NodeJS API documentation](https://nodejs.org/dist/latest-v11.x/docs/api/)
 
+[NPM repository](https://www.npmjs.com/)
+
 ---
 
 # Questions?
