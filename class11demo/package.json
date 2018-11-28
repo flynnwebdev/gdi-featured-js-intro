@@ -1,14 +1,16 @@
 {
   "name": "class11demo",
   "version": "1.0.0",
-  "description": "",
-  "main": "listpeople.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
+  "description": "Node class test package",
+  "main": "helloworld.js",
   "dependencies": {
+    "capitalize-first-letter": "^1.0.0",
     "upper-case": "^1.1.3"
-  }
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": ""
+  },
+  "author": "Matt Flynn",
+  "license": "MIT"
 }
