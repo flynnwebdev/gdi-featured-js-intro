@@ -19,3 +19,5 @@
 [Part 10 - Cookies and Web Storage](https://flynnwebdev.github.io/javascript-slides/class10-export/#/)
 
 [Part 11 - NodeJS](https://flynnwebdev.github.io/javascript-slides/class11-export/#/)
+
+[Part 12 - React State](https://flynnwebdev.github.io/javascript-slides/class12-export/#/)
