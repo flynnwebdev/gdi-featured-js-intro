@@ -113,7 +113,7 @@ If we know that a given component we're building will never need internal state 
 
 ## Convert Function to Class
 
-You can convert a functional component like `Clock` to a class in five steps:
+Let's convert our functional component to a class.
 
 1.  Create an [ES6 class](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes), with the same name, that extends `React.Component`.
     
@@ -325,6 +325,10 @@ Note how we save the timer ID right on `this`. We don't need to store it in `thi
 
 If we wanted to show the timerID in the DOM tree somewhere, then we'd need to put it in `this.state`
 
+---
+
+## Lifecycle Methods
+
 We will tear down the timer in the `componentWillUnmount()` lifecycle method:
 
 ```js
@@ -333,13 +337,13 @@ We will tear down the timer in the `componentWillUnmount()` lifecycle method:
   }
 ```
 
+clearInterval stops the timer with the given ID and destroys it.
+
 ---
 
 ## Lifecycle Methods
 
-Finally, we will implement a method called `tick()` that the `Clock` component will run every second.
-
-It will use `this.setState()` to schedule updates to the component local state:
+Finally, we will implement a method called `tick()` that the `Clock` component will run every second. It will use `this.setState()` to schedule updates to the component local state:
 
 ```js
 class Clock extends React.Component {
@@ -347,24 +351,20 @@ class Clock extends React.Component {
     super(props)
     this.state = {date: new Date()}
   }
-
   componentDidMount() {
     this.timerID = setInterval(
       () => this.tick(),
       1000
     )
   }
-
   componentWillUnmount() {
     clearInterval(this.timerID)
   }
-
   tick() {
     this.setState({
       date: new Date()
     })
   }
-
   render() {
     return (
       <div>
@@ -385,9 +385,7 @@ ReactDOM.render(
 
 ## Data flow recap
 
-Now the clock ticks every second.
-
-Let’s quickly recap what’s going on and the order in which the methods are called:
+Now the clock ticks every second. Let’s quickly recap what’s going on and the order in which the methods are called:
 
 1. When `<Clock />` is passed to `ReactDOM.render()`, React calls the constructor of the `Clock` component. Since `Clock` needs to display the current time, it initializes `this.state` with an object including the current time. We will later update this state.
     
@@ -462,9 +460,7 @@ this.setState((state, props) => ({
 
 ### State Updates are Merged
 
-When you call `setState()`, React merges the object you provide into the current state.
-
-For example, your state may contain several independent variables:
+When you call `setState()`, React merges the object you provide into the current state. For example, your state may contain several independent variables:
 
 ```js
   constructor(props) {
@@ -485,7 +481,6 @@ Then you can update them independently with separate `setState()` calls:
         posts: response.posts
       })
     })
-
     fetchComments().then(response => {
       this.setState({
         comments: response.comments
@@ -517,6 +512,10 @@ A component may choose to pass its state down as props to its child components:
 In the above example, the parent of this `FormattedDate` component is passing down a property from it's own state (in this case, date).
 
 The `FormattedDate` component would receive the `date` in its props, but it doesn't (and shouldn't) know whether it came from the `Clock`’s state, from the `Clock`’s props, a variable or constant, a hard-coded value, etc...
+
+---
+
+## The Data Flows Down
 
 ```js
 function FormattedDate(props) {
