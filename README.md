@@ -23,3 +23,5 @@
 [Part 12 - React State](https://flynnwebdev.github.io/javascript-slides/class12-export/#/)
 
 [Part 13 - React Forms](https://flynnwebdev.github.io/javascript-slides/class13-export/#/)
+
+[Part 14 - AXIOS](https://flynnwebdev.github.io/javascript-slides/class14-export/#/)
