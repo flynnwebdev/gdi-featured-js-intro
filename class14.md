@@ -75,7 +75,7 @@ mkdir axios-demo
 cd axios-demo
 mkdir server
 cd server
-npm init
+npm init -y
 npm install express
 ```
 
