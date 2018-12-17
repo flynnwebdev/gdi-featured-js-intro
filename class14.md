@@ -73,6 +73,8 @@ We'll keep it as simple as possible, so no generator.
 ```
 mkdir axios-demo
 cd axios-demo
+mkdir server
+cd server
 npm init
 npm install express
 ```
