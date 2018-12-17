@@ -73,8 +73,10 @@ We'll keep it as simple as possible, so no generator.
 ```
 mkdir axios-demo
 cd axios-demo
-npm init
-npm install express
+mkdir server
+cd server
+npm init -y
+npm install express cors
 ```
 
 ---
@@ -84,6 +86,7 @@ npm install express
 We'll just do a very basic server in a single app.js file.
 
 ```js
+const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const app = express()
@@ -309,6 +312,7 @@ Replace all instances of `axios` in the code with `studentAPI` and remove the fi
 ## Resources
 
 [AXIOS Github](https://github.com/axios/axios)
+
 [AXIOS with React Quickstart](https://alligator.io/react/axios-react/)
 
 ---

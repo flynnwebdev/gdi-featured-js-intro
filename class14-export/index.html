@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>RevealJS : c:\Users\flynn\projects\javascript-slides\class14.md</title>
+        <title>RevealJS : c:\Users\flynn\Projects\javascript-slides\class14.md</title>
         <link rel="stylesheet" href="css/reveal.css">
         <link rel="stylesheet" href="css/theme/sky.css" id="theme">
         
@@ -102,7 +102,9 @@ We'll keep it as simple as possible, so no generator.
 ```
 mkdir axios-demo
 cd axios-demo
-npm init
+mkdir server
+cd server
+npm init -y
 npm install express
 ```
 </script></section><section  data-markdown><script type="text/template">
@@ -112,6 +114,7 @@ npm install express
 We'll just do a very basic server in a single app.js file.
 
 ```js
+const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const app = express()
@@ -325,6 +328,7 @@ Replace all instances of `axios` in the code with `studentAPI` and remove the fi
 ## Resources
 
 [AXIOS Github](https://github.com/axios/axios)
+
 [AXIOS with React Quickstart](https://alligator.io/react/axios-react/)
 </script></section><section  data-markdown><script type="text/template">
 
