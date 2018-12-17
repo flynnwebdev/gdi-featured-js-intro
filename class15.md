@@ -51,7 +51,6 @@ cd sessions
 npm init -y
 npm install express express-session uuid
 code .
-npm start
 ```
 
 We're also installing `uuid` for generating a unique session key.
@@ -63,6 +62,8 @@ We're also installing `uuid` for generating a unique session key.
 `express-session` is a middleware, so we need to pass it to `app.use`
 
 We also need to set a unique key that will be used to sign the session ID. The secret will never be sent to the client, only the session ID encypted with it.
+
+Put this code in `app.js`
 
 ```js
 const express = require('express')
@@ -76,9 +77,13 @@ app.use(session({
     maxAge: 60000  // One minute
   } 
 }))
+
+app.listen(3000)
 ```
 
 Setting `maxAge` is optional. If we omit it, browsers will assume it's a non-persistent cookie and delete it as soon as the user closes the browser.
+
+Run the Express server with `nodemon app.js`
 
 ---
 
@@ -99,7 +104,7 @@ npm i morgan
 ```
 
 ```js
-let morgan = require('morgan')
+const morgan = require('morgan')
 
 app.use(morgan('dev'))
 ```
