@@ -205,14 +205,12 @@ Make sure your Mongo server is running (`mongod`), then try our demo app again.
 ## Resources
 
 [express-session documentation](https://www.npmjs.com/package/express-session)
-[connect-mongo documentation](https://www.npmjs.com/package/connect-mongo)
 
-[AXIOS Github](https://github.com/axios/axios)
-[AXIOS with React Quickstart](https://alligator.io/react/axios-react/)
+[connect-mongo documentation](https://www.npmjs.com/package/connect-mongo)
 
 ---
 
 ## AFTERNOON CHALLENGE
 
-### [Canvas Unit: AXIOS](https://coderacademy.instructure.com/courses/144/pages/unit-axios)
+### [Canvas Unit: Middleware Sessions](https://coderacademy.instructure.com/courses/144/pages/unit-middleware-sessions)
 
