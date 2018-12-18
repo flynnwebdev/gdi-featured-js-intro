@@ -29,17 +29,239 @@ highlightTheme : "agate"
 
 # Node Authentication
 
+#### (Here be dragons)
+
 ---
 
-## Password salting
+## Password salting and hashing
 
-<iframe style="width:80%; height:100vh;"  src="https://www.youtube.com/embed/sjEeqtZ7Tw4?controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+Because passwords are obviously highly sensitive information, we need to make them as secure as possible. Salting and hashing are two commonly used techniques for that purpose.
+
+<iframe style="width:80%; height:80vh;"  src="https://www.youtube.com/embed/sjEeqtZ7Tw4?controls=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ---
 
 ## Passport
 
+Implementing authentication from scratch is time-consuming and error-prone, something we definitely don't want when it comes to security!
 
+Instead, we'll use a proven, tested solution called Passport. It's basically the Node equivalent of the Devise gem you used in Rails.
+
+Passport requires a fair bit of configuration to get it working, but is actually an easier solution than most others. Unfortunately, authorization is inherently complex, so can't be abstracted away completely. There _will_ be some magic!
+
+---
+
+## Generate Express App
+
+For this one, let's use the Express generator to create a skeleton app, so we can focus on the Passport specific code.
+
+```sh
+express --view=ejs passport-demo
+cd passport-demo
+npm install
+npm i mongoose passport passport-local-mongoose express-session
+code .
+nodemon
+```
+
+---
+
+## The User Model
+
+For Passport to work, we need to attach it to a User model, like we did in Rails with Devise.
+
+First create a `models` folder and a `user.js` file in it, then add this code:
+
+```js
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+
+// Passport-Local Mongoose will add a username, hash and salt field to store the
+// username, the hashed password and the salt value. Additionally Passport-Local
+// Mongoose adds some methods to your Schema.
+const passportLocalMongoose = require('passport-local-mongoose');
+
+// We'll start with an empty schema, since we only want the fields provided by Passport for now.
+// We can add custom fields for our User model later.
+const User = new Schema({});
+
+// connect passportLocalMongoose to the User schema and use 'email' instead of 'username'
+User.plugin(passportLocalMongoose, { usernameField: 'email' });
+
+module.exports = mongoose.model('User', User);
+```
+
+---
+
+## Strategy
+
+The previous code created our User schema and model as usual, but also 'plugged in' `passportLocalMongoose`. But what is that exactly, and what does it do?
+
+Passport is designed to support any number of different methods of authentication, including things like public key and even social media login like Facebook or Google.
+
+To achieve this, Passport allows us to set a _strategy_, which is a package that implements a particular method of authentication. We can easily change or add additional strategies whenever we want.
+
+In this case, we've chosen the `local` strategy with `mongoose` as the backing datastore.
+
+---
+
+## APP.JS
+
+In your `app.js`, require the new Node packages and our User model.
+
+```js
+const session = require('express-session')
+const passport = require('passport');
+const mongoose = require('mongoose');
+const User = require('./models/user');
+```
+
+---
+
+## set passport strategy
+
+Next, we need to tell Passport which authentication strategy to use. We have to state it explicitly because we may have configured more than one strategy, so we need to set a default.
+
+Because we established a strategy in our User model, we'll just tell Passport to use a new instance of that:
+
+```js
+// use static authenticate method of model in LocalStrategy
+passport.use(User.createStrategy());
+```
+
+`createStrategy` is a built-in method of Passport that creates an instance of whichever strategy is attached to the model.
+
+---
+
+## model serialization
+
+Passport is agnostic with regard to how our app stores users, or even what a user is. In our case, we're using a Mongoose model, but Passport doesn't know that.
+
+Thus, we need to provide functions to Passport that it can call when it needs to store (serialize) or retrieve (deserialize) users to or from the session.
+
+```js
+// use static serialize and deserialize of model for passport session support
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+```
+
+We can use custom functions, but since we're using Mongoose, we'll just use the built-in functions.
+
+---
+
+## Use the session, luke
+
+Now we can add session support to our app.
+
+```js
+// use sessions
+app.use(session({
+  secret: "these are not the droids you're looking for",
+}))
+```
+
+---
+
+## use passport
+
+Now that we've configured Passport and initiated the session, we can finally initialize Passport, then connect the session to it.
+
+Since Passport depends on our User model, which in turn depends on Mongoose, we'll also need to open a connection to our Mongo server.
+
+```js
+// Initialize Passport and connect it into the Express pipeline
+app.use(passport.initialize());
+// Connect Passport to the session
+app.use(passport.session());
+
+// mongoose
+mongoose.connect('mongodb://localhost/express-mongo-passport', (err) => {
+  if (err) {
+    console.log('Error connecting to database', err);
+  } else {
+    console.log('Connected to database!');
+  }
+});
+```
+
+---
+
+## Register a new user
+
+The app should run without error at this point, but we can't really do anything useful with it yet.
+
+Let's add a route for registering a new user. Replace the contents of `routes/users.js` with this:
+
+```js
+const express = require('express');
+const User = require('../models/user');
+const passport = require('passport');
+const router = express.Router();
+
+// Register a new user
+router.post('/register', (req, res) => {
+  User.register(new User({ email: req.body.email }), req.body.password, (err) => {
+    if (err) {
+      return res.status(500).send(err.message);
+    }
+    // Log the new user in (Passport will create a session) using the local strategy
+    passport.authenticate('local')(req, res, () => {
+      res.redirect('/');
+    });
+  });
+});
+
+module.exports = router;
+```
+
+---
+
+## Register a new user
+
+Let's break down how that works.
+
+1. We call the Passport method `register` on our User model. passing it a new instance of the User model and the password.
+2. If registration failed, respond to the client with a 500 status and the error message.
+3. Otherwise, log in (`authenticate`) the newly created user.
+
+We didn't need to salt or hash the password, or store anything in the database. Passport does it for us automatically.
+
+Let's use Postman to register a user, then use Mongo terminal to see what gets created in the database.
+
+---
+
+## Log In
+
+We'll also need a route for logging in.
+
+```js
+// Login an existing user
+router.post('/login', passport.authenticate('local'), (req, res) => {
+  res.redirect('/');
+});
+```
+
+Here we are chaining middleware together in a kind of mini pipeline. `passport.authenticate` will run first and try to log in with the credentials provided in the request.
+
+If successful, then `authenticate` will invoke the next middleware, which in this case is our anonymous callback.
+
+If authentication fails, Passport will send a 401 (unauthorized) response to the client.
+
+---
+
+## Log Out
+
+Finally, we need a way to log out.
+
+```js
+// Logout the current user
+router.get('/logout', (req, res) => {
+  req.logout();
+  res.redirect('/');
+});
+```
+
+Test both login and logout with Postman.
 
 ---
 
@@ -49,13 +271,10 @@ highlightTheme : "agate"
 
 ## Resources
 
-[express-session documentation](https://www.npmjs.com/package/express-session)
-
-[connect-mongo documentation](https://www.npmjs.com/package/connect-mongo)
+[Passport site](http://www.passportjs.org/)
 
 ---
 
 ## AFTERNOON CHALLENGE
 
-### [Canvas Unit: Middleware Sessions](https://coderacademy.instructure.com/courses/144/pages/unit-middleware-sessions)
-
+### [Canvas Unit: Salting and Hashing](https://coderacademy.instructure.com/courses/144/pages/unit-salting-and-hashing?module_item_id=5189)
