@@ -49,11 +49,9 @@ As you might expect, there's a Node package that implements sessions for Express
 mkdir sessions
 cd sessions
 npm init -y
-npm install express express-session uuid
+npm install express express-session
 code .
 ```
-
-We're also installing `uuid` for generating a unique session key.
 
 ---
 
@@ -68,7 +66,6 @@ Put this code in `app.js`
 ```js
 const express = require('express')
 const session = require('express-session')
-const uuid = require('uuid/v1') 
  
 let app = express()
 app.use(session({
