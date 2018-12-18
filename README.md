@@ -27,3 +27,5 @@
 [Class 14 - AXIOS](https://flynnwebdev.github.io/javascript-slides/class14-export/#/)
 
 [Class 15 - Express Sessions](https://flynnwebdev.github.io/javascript-slides/class15-export/#/)
+
+[Class 16 - Passport Authentication](https://flynnwebdev.github.io/javascript-slides/class16-export/#/)
