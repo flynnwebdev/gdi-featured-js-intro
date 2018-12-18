@@ -61,7 +61,7 @@ We're also installing `uuid` for generating a unique session key.
 
 `express-session` is a middleware, so we need to pass it to `app.use`
 
-We also need to set a unique key that will be used to sign the session ID. The secret will never be sent to the client, only the session ID encypted with it.
+We also need to set a unique key that will be used to sign the session ID. The secret will never be sent to the client, only the session ID encypted with it. The reasons why we need to sign the session are many - see [this thorough discussion](https://hueniverse.com/on-securing-web-session-ids-b90f566b3786)
 
 Put this code in `app.js`
 
