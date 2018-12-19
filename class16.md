@@ -1,6 +1,6 @@
 ---
-theme : "sky"
-highlightTheme : "agate"
+theme : "moon"
+highlightTheme : "monokai"
 ---
 
 <style>
@@ -186,11 +186,15 @@ mongoose.connect('mongodb://localhost/express-mongo-passport', (err) => {
 
 ---
 
+## Aside: Closures
+
+
+
+---
+
 ## Register a new user
 
-The app should run without error at this point, but we can't really do anything useful with it yet.
-
-Let's add a route for registering a new user. Replace the contents of `routes/users.js` with this:
+Before we can authenticate users, we need a way for new users to register an account. Let's add a route for registering a new user. Replace the contents of `routes/users.js` with this:
 
 ```js
 const express = require('express');
@@ -206,13 +210,19 @@ router.post('/register', (req, res) => {
     }
     // Log the new user in (Passport will create a session) using the local strategy
     passport.authenticate('local')(req, res, () => {
-      res.redirect('/');
+      // req.user exists at this point.
+      // Normally we wouldn't send back the entire user object - this is for learning purposes.
+      // Instead, we might send back only the username or email, or even just a status code.
+      res.json(req.user)
+      // res.sendStatus(200)
     });
   });
 });
 
 module.exports = router;
 ```
+
+This uses a [closure](https://medium.com/dailyjs/i-never-understood-javascript-closures-9663703368e8) to pass the request, response and next objects that would normally be supplied by the middleware pipeline.
 
 ---
 
@@ -237,7 +247,12 @@ We'll also need a route for logging in.
 ```js
 // Login an existing user
 router.post('/login', passport.authenticate('local'), (req, res) => {
-  res.redirect('/');
+  // At this point, authentication was successful and req.user exists.
+
+  // Normally we wouldn't send back the entire user object - this is for learning purposes.
+  // Instead, we might send back only the username or email, or even just a status code.
+  res.json(req.user)
+  // res.sendStatus(200)
 });
 ```
 
@@ -257,7 +272,7 @@ Finally, we need a way to log out.
 // Logout the current user
 router.get('/logout', (req, res) => {
   req.logout();
-  res.redirect('/');
+  res.sendStatus(200)
 });
 ```
 
@@ -278,3 +293,7 @@ Test both login and logout with Postman.
 ## AFTERNOON CHALLENGE
 
 ### [Canvas Unit: Salting and Hashing](https://coderacademy.instructure.com/courses/144/pages/unit-salting-and-hashing?module_item_id=5189)
+
+**Don't download the linked source code from the Canvas unit.**
+
+Either use your code-along project from this lesson, or [clone my repo](https://github.com/flynnwebdev/passport-demo)
