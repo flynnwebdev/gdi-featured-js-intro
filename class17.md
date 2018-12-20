@@ -63,46 +63,41 @@ npm i express-acl
 
 Express acl uses the configuration approach to define access levels.
 
-First step is to create a file called `nacl.json` and place this in the root folder. This is the file where we will define the roles that can access our application, and the policies that restrict or give access to certain resources.
+First step is to create a file called `acl.yml` in the root folder. This is the file where we will define the roles that can access our application, and the policies that restrict or give access to certain resources.
 
 Later we'll tell ACL to load this file and apply the rules to all incoming requests.
 
-For now, let's allow anyone with the `admin` role to make any request type to any resource, and deny ordinary users access to a specific path, but allow everything else.
-
 ---
 
-```json
-[
-    {
-        "group": "admin",
-        "permissions": [
-            {
-                "resource": "*",
-                "methods": "*",
-                "action": "allow"
-            }
-        ]
-    },
-    {
-        "group": "user",
-        "permissions": [
-            {
-                "resource": "foo/",
-                "methods": [
-                    "POST",
-                    "GET",
-                    "PUT"
-                ],
-                "action": "deny"
-            },
-            {
-                "resource": "*",
-                "methods": "*",
-                "action": "allow"
-            }
-        ]
-    }
-]
+```yml
+---
+- group: admin
+  permissions:  # allow admin full access
+  - resource: "*"
+    methods: "*"
+    action: allow
+- group: user
+  permissions:  # deny user access to dashboard, allow everything else
+  - resource: dashboard/*
+    methods: "*"
+    action: deny
+  - resource: "*"
+    methods: "*"
+    action: allow
+- group: guest
+  permissions:  # guests can GET homepage and POST to login and register only
+  - resource: "/"
+    methods:
+    - GET
+    action: allow
+  - resource: users/login
+    methods:
+    - POST
+    action: allow
+  - resource: users/register
+    methods:
+    - POST
+    action: allow
 ```
 
 ---
@@ -121,19 +116,20 @@ We need to call config() first so the ACL module loads our policies from the JSO
 
 ```js
 acl.config({
-  defaultRole: 'user'
+  filename: 'acl.yml',
+  defaultRole: 'guest'
 })
 
 app.use(acl.authorize)
 ```
 
-We've set a `defaultRole` to cover users that may not have a role set.
+We've set a `defaultRole` to cover users that may not have a role set, or anonymous visitors who are not logged in at all.
 
 ---
 
 ## User roles
 
-We've got ACL set up, but what if we want a user to have a different role to `user`?
+We've got ACL set up, but what if we want a user to have a different role to `guest`?
 
 Let's go to our User model in `/models/user.js` and add a `role` attribute.
 
@@ -160,7 +156,7 @@ router.post('/register', (req, res) => {
     }
     // Log the new user in (Passport will create a session) using the local strategy
     passport.authenticate('local')(req, res, () => {
-      req.session.role = req.user.role || 'user'
+      req.session.role = req.user.role || 'guest'  // default to guest if no user or role
       res.sendStatus(200)
     });
   });
@@ -168,7 +164,7 @@ router.post('/register', (req, res) => {
 
 // Login an existing user
 router.post('/login', passport.authenticate('local'), (req, res) => {
-  req.session.role = req.user.role || 'user'
+  req.session.role = req.user.role || 'guest'
   res.sendStatus(200)
 });
 ```
@@ -177,15 +173,13 @@ router.post('/login', passport.authenticate('local'), (req, res) => {
 
 ## Add a route for testing
 
-Since we specified rules for a `foo` path in our ACL, let's create that route in `routes/index.js`.
+Since we specified rules for a `dashboard` path in our ACL, let's create that route in `routes/index.js`.
 
 ```js
-router.get('/foo', function (req, res, next) {
-  res.json(req.user)
+router.get('/dashboard', function (req, res, next) {
+  res.send('<h1>Admin Dashboard</h1>')
 });
 ```
-
-If we're allowed to access it, we'll just send back a JSON of the user.
 
 ---
 
@@ -193,19 +187,20 @@ If we're allowed to access it, we'll just send back a JSON of the user.
 
 Use Postman to create a second user for your app, using whatever email and password you like.
 
-Once created, we'll use the Mongo terminal to set the new user role to `admin`.
+Once created, we'll use the Mongo terminal to set the new user role to `admin`. We'll also set our original user to have the role `user`
 
 ```sh
 mongo
 show dbs
 use express-mongo-passport
 show collections
-db.users.update({ email: 'john@bar.com' }, { $set: { role: 'admin' } })
+db.users.update({ email: 'matt@bar.com' }, { $set: { role: 'admin' } })
+db.users.update({ email: 'foo@bar.com' }, { $set: { role: 'user' } })
 ```
 
-Once set, use Postman to login as your new admin user, then another request to GET `/foo`.
+Once set, use Postman to login as your new admin user, then another request to GET `/dashboard`. You should have access.
 
-Now log in as your original, non-admin user, then try to GET `/foo` again.
+Now log in as your original, non-admin user, then try to GET `/dashboard` again. Access should be denied.
 
 ---
 
@@ -249,4 +244,4 @@ There are several other config options available. Check [the documentation](http
 
 **Don't download the linked source code from the Canvas unit.**
 
-Either use your code-along project from this lesson, or [clone my repo](https://github.com/flynnwebdev/passport-demo)
+Either use your code-along project from this lesson, or [clone the master branch of my repo](https://github.com/flynnwebdev/passport-demo)
