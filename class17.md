@@ -59,7 +59,7 @@ npm i express-acl
 
 ---
 
-## Create JSON configuration file
+## Create YAML configuration file
 
 Express acl uses the configuration approach to define access levels.
 
