@@ -69,8 +69,8 @@ Later we'll tell ACL to load this file and apply the rules to all incoming reque
 
 ---
 
-```yml
----
+```yaml
+--- 
 - group: admin
   permissions:  # allow admin full access
   - resource: "*"
@@ -240,7 +240,7 @@ There are several other config options available. Check [the documentation](http
 
 ** Make sure you've done [Canvas Unit: Salting and Hashing](https://coderacademy.instructure.com/courses/144/pages/unit-salting-and-hashing?module_item_id=5189) first! **
 
-[Canvas Unit: Authorization](https://coderacademy.instructure.com/courses/144/pages/unit-authorization?module_item_id=5191)
+## [Canvas Unit: Authorization](https://coderacademy.instructure.com/courses/144/pages/unit-authorization?module_item_id=5191)
 
 **Don't download the linked source code from the Canvas unit.**
 
