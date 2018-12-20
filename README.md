@@ -31,3 +31,5 @@
 [Class 16 - Passport Authentication](https://flynnwebdev.github.io/javascript-slides/class16-export/#/)
 
 [Class 17 - Express Authorization](https://flynnwebdev.github.io/javascript-slides/class17-export/#/)
+
+[Class 18 - MERN - Testing the Server](https://docs.google.com/presentation/d/1eTWGaQ-MlkLnezq2alhL8GqtlmVU31tt6w_GxVWGcRs/edit?usp=sharing)
