@@ -33,7 +33,7 @@ highlightTheme : "monokai"
 
 ## Authentication vs Authorization
 
-Let's start with a quick refresher on the difference between _authentication_ and _authorization_
+Let's start with a quick refresher on the difference between _authentication_ and _authorization_ 
 
 **Authentication** is the process of verifying that a given user is who they claim to be. That is, do the credentials provided by the user match a known user of the system?
 
