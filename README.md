@@ -31,3 +31,5 @@
 [Class 16 - Passport Authentication](https://flynnwebdev.github.io/javascript-slides/class16-export/#/)
 
 [Class 17 - Express Authorization](https://flynnwebdev.github.io/javascript-slides/class17-export/#/)
+
+[Class 18 - Client Side Routing](https://flynnwebdev.github.io/javascript-slides/class18-export/#/)
