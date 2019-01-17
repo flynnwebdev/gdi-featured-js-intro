@@ -33,3 +33,15 @@
 [Class 17 - Express Authorization](https://flynnwebdev.github.io/javascript-slides/class17-export/#/)
 
 [Class 18 - Client Side Routing](https://flynnwebdev.github.io/javascript-slides/class18-export/#/)
+
+[Class 19 - Express/Node Testing with Mocha](https://docs.google.com/presentation/d/1eTWGaQ-MlkLnezq2alhL8GqtlmVU31tt6w_GxVWGcRs/edit?usp=sharing)
+
+[Class 20 - React Redux](https://docs.google.com/presentation/d/1ymwZEGsalj-CmSS_JXatjxCe3AjM6xTBVy9yvaPLtfc/edit?usp=sharing)
+
+[Class 21 - React JWT](https://docs.google.com/presentation/d/1JVMeA-j3FSnw6TYEIQWoZRPTPwxwgHehOqDXS0l4i-k/edit?usp=sharing)
+
+[Class 22 - Jest Basics and Snapshots](https://docs.google.com/presentation/d/1RGp3UxopACsNKSUT2Fsadg15EfCDsQE4Mxe0yQrV25A/edit?usp=sharing)
+
+[Class 23 - Jest Mocking](https://docs.google.com/presentation/d/1ZD4DGS9wq4yxITLE67QahaYn17wP0U8P06n_No6QND0/edit?usp=sharing)
+
+[Class 24 - React PropTypes](https://docs.google.com/presentation/d/1w4Xr0wvy9yMMvyBxdYAuYDkKpFFum4Mi-A8lDDXbQc4/edit?usp=sharing)
