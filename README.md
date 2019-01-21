@@ -45,3 +45,5 @@
 [Class 23 - Jest Mocking](https://docs.google.com/presentation/d/1ZD4DGS9wq4yxITLE67QahaYn17wP0U8P06n_No6QND0/edit?usp=sharing)
 
 [Class 24 - React PropTypes](https://docs.google.com/presentation/d/1w4Xr0wvy9yMMvyBxdYAuYDkKpFFum4Mi-A8lDDXbQc4/edit?usp=sharing)
+
+[Class 25 - React Styled Components](https://docs.google.com/presentation/d/1FAcT2ctbJfJRtdNSIOylfHP0P1QDTx15FFNCayDb_BM/edit?usp=sharing)
